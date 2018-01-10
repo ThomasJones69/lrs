@@ -1,0 +1,29 @@
+.leerling 
+{
+    display:inline-block;
+}
+
+.banner{
+    height: 100px;
+
+}
+
+header{
+    color: red;
+    font-size: 30px;
+    text-align: center;
+}
+
+nav{
+    height:30px;
+    background-color: grey;
+}
+.zoek{
+    background-color: blue;
+    width: 142px;
+}
+
+footer{
+    background-color: grey;
+    height:60px;
+}
