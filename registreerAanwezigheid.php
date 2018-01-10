@@ -1,6 +1,8 @@
 <?php
-	session_start();
-	$item      = $_SESSION['item'];
+session_start();
+require_once './connection.php';
+
+/*	$item      = $_SESSION['item'];
 	$desc      = $_SESSION['desc'];
 	$stock     = $_SESSION['stock'];
 	$minStock  = $_SESSION['minStock'];
@@ -8,10 +10,17 @@
 	$warehouse = $_SESSION['warehouse'];
 	require_once './connection.php';
 	require_once './model.php';
+*/	
 	$conn = connectToDb();
-	$sql = "SELECT * FROM `item` WHERE 1 LIMIT 1 offset " . $_GET['itemSearch'];
+	$sql = "SELECT * FROM `aanwezigheid` WHERE `leerling_id` =".$_REQUEST['leerlingID'];
+//	$sql = "SELECT * FROM `aanwezigheid` WHERE 1 LIMIT 1 offset " . $_GET['leerlingID'];
+	echo($sql);
 	$resultSet = $conn->query($sql);
-	$row       = $resultSet->fetch_assoc();
+//	echo mysqli_num_rows($resultSet);
+	$row   = $resultSet->fetch_assoc();
+	
+	
+/*
 	$item      = $row['item'];
 	$desc      = $row['description'];
 	$stock     = $row['stock'];
@@ -32,4 +41,5 @@
 	$objTransportItem->maxStock    = $maxStock;
 	$objTransportItem->warehouse   = $warehouse;
 	echo json_encode($objTransportItem);
+*/	
 ?>

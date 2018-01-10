@@ -3,8 +3,28 @@ session_start();
 require_once './connection.php';
 ?>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html>
     <head>
+
+	<style>
+
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	
+	
+<script> 
+	
+            function aanwezig(leerling) {
+//                console.log(leerling.id);
+			
+			$.post("registreerAanwezigheid.php", {leerlingID: leerling.id}, function(data){                                          
+//			$.post("./registreerAanwezigheid.php",  function(data){                                          
+				alert("Data: " + data + "\nStatus: " + status);
+				$('#somediv').html(data);});
+			}
+
+</script> 
+
         <link rel="stylesheet" type="text/css" href="opmaaklrs.css">
             <style>
 
@@ -40,6 +60,7 @@ require_once './connection.php';
 
 
             </script> 
+
 
 
 
