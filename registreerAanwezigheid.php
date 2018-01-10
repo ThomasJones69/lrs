@@ -16,10 +16,13 @@ require_once './connection.php';
 //	$sql = "SELECT * FROM `aanwezigheid` WHERE 1 LIMIT 1 offset " . $_GET['leerlingID'];
 	echo($sql);
 	$resultSet = $conn->query($sql);
-//	echo mysqli_num_rows($resultSet);
-	$row   = $resultSet->fetch_assoc();
+//	if ( mysqli_num_rows($resultSet) != 1 ) {
+		$row = $resultSet->fetch_assoc();
+		echo( $row['leerling_id'] ) ;
+//	} else {
+//	echo "aantal  ongelijk aan 1";
 	
-	
+//	}
 /*
 	$item      = $row['item'];
 	$desc      = $row['description'];
