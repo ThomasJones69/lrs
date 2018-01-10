@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 09 jan 2018 om 16:24
--- Serverversie: 10.1.28-MariaDB
--- PHP-versie: 7.1.10
+-- Gegenereerd op: 10 jan 2018 om 14:53
+-- Serverversie: 10.1.29-MariaDB
+-- PHP-versie: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,7 +32,7 @@ CREATE TABLE `aanwezigheid` (
   `leerling_id` int(11) NOT NULL,
   `datum` date NOT NULL,
   `tijd` int(5) NOT NULL,
-  `absentiecode` int(11) NOT NULL,
+  `absentiecode` int(11) DEFAULT NULL,
   `klas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -41,8 +41,14 @@ CREATE TABLE `aanwezigheid` (
 --
 
 INSERT INTO `aanwezigheid` (`leerling_id`, `datum`, `tijd`, `absentiecode`, `klas`) VALUES
-(1, '2018-01-09', 1200, 1, 1),
-(2, '2018-01-09', 1200, 1, 1);
+(1, '2018-01-10', 1447, 0, 1),
+(1, '2018-01-10', 1448, 0, 1),
+(1, '2018-01-10', 1450, 0, 1),
+(1, '2018-01-10', 1451, 0, 1),
+(2, '2018-01-10', 1450, 0, 1),
+(2, '2018-01-10', 1451, 0, 1),
+(3, '2018-01-10', 1450, 0, 1),
+(3, '2018-01-10', 1451, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -119,7 +125,7 @@ INSERT INTO `leerling` (`id`, `naam`, `adres`, `woonplaats`, `tel`, `telnood`, `
 -- Indexen voor tabel `aanwezigheid`
 --
 ALTER TABLE `aanwezigheid`
-  ADD PRIMARY KEY (`leerling_id`);
+  ADD PRIMARY KEY (`leerling_id`,`datum`,`tijd`);
 
 --
 -- Indexen voor tabel `absentie`
@@ -147,7 +153,7 @@ ALTER TABLE `leerling`
 -- AUTO_INCREMENT voor een tabel `aanwezigheid`
 --
 ALTER TABLE `aanwezigheid`
-  MODIFY `leerling_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `leerling_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT voor een tabel `absentie`

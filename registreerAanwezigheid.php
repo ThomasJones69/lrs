@@ -11,14 +11,20 @@ require_once './connection.php';
 	require_once './connection.php';
 	require_once './model.php';
 */	
+
+$huidigeDatum = date("Y-m-d");
+$huidigeTijd  = date("Hi");
+
 	$conn = connectToDb();
-	$sql = "SELECT * FROM `aanwezigheid` WHERE `leerling_id` =".$_REQUEST['leerling_id'];
-//	$sql = "SELECT * FROM `aanwezigheid` WHERE 1 LIMIT 1 offset " . $_GET['leerlingID'];
+//sql = "SELECT * FROM `aanwezigheid` WHERE `leerling_id` =".$_REQUEST['leerling_id'];
+ $sql = "INSERT INTO `aanwezigheid`(`leerling_id`, `datum`, `tijd`, `absentiecode`, `klas`) VALUES (" .$_REQUEST['leerlingID'] ." ,'" . $huidigeDatum. "','". $huidigeTijd ." ',0 ,1)";
+//echo $sql;	
+	//	$sql = "SELECT * FROM `aanwezigheid` WHERE 1 LIMIT 1 offset " . $_GET['leerlingID'];
 //	echo($sql);
 	$resultSet = $conn->query($sql);
 //	if ( mysqli_num_rows($resultSet) != 1 ) {
-		$row = $resultSet->fetch_assoc();
-		echo( $row['leerling_id'] ) ;
+//		$row = $resultSet->fetch_assoc();
+//		echo( $row['leerling_id'] ) ;
 //	} else {
 //	echo "aantal  ongelijk aan 1";
 	

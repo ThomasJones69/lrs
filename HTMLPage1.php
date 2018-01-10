@@ -15,12 +15,13 @@ require_once './connection.php';
 <script> 
 	
             function aanwezig(leerling) {
-//                console.log(leerling.id);
+                console.log(leerling.id);
 			
 			$.post("registreerAanwezigheid.php", {leerlingID: leerling.id}, function(data,status ){                                          
 //			$.post("./registreerAanwezigheid.php",  function(data){                                          
-				alert("Data: " + data + "\nStatus: " + status);
-				$('#somediv').html(data);});
+//				alert("Data: " + data + "\nStatus: " + status);
+//				$('#somediv').html(data);
+				});
 			}
 
 </script> 
