@@ -31,7 +31,7 @@ $schermvolgnr	=	berekenSchermVolgnr($klas)
 	if ( $result->num_rows  == 0 ) {
 		$klas 			= 1;
 		$schermvolgnr	=	berekenSchermVolgnr($klas);	
-		$foto			=	"/fotoos/default.jpg";
+		$foto			=	"fotoos/default.jpg";
 		
 	
 		$sql = "INSERT INTO `leerling`(`naam`, `foto`, `schermvolgnr`, `klas`)" 
