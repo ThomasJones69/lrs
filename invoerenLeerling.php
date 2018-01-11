@@ -18,8 +18,7 @@ $schermvolgnr	=	berekenSchermVolgnr($klas)
 	$conn 	= connectToDb();
 	$sql = "SELECT *   FROM `leerling`  where `naam` = ".$naam ;
 	$result = $conn->query($sql);
-	$row 	= mysqli_fetch_array($result) ;
-	if ( mysqli_num_rows($row) == 0 ) {
+	if ( $result->num_rows  == 0 ) {
 		$klas 			= 1;
 		$schermvolgnr	=	berekenSchermVolgnr($klas);	
 		$foto			=	"/fotoos/default.jpg";
@@ -56,9 +55,7 @@ $schermvolgnr	=	berekenSchermVolgnr($klas)
 //	echo $result->num_rows;
 	if (isset($row['maxSchermVolgnr'])) {
 //		echo $row['maxSchermVolgnr'];
-		
 		$eruit = $row['maxSchermVolgnr'];
-		
 //		echo "\n";
 	} else	{
 		$eruit = 1;

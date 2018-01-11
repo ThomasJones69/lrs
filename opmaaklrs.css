@@ -1,6 +1,8 @@
 .leerling 
 {
     display:inline-block;
+	clear:left;
+
 }
 
 .banner{
