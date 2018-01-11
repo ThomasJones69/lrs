@@ -5,13 +5,7 @@ require_once './connection.php';
 
 <html>
     <head>
-
-	<style>
-
-
-</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	
-	
 <script> 
 	
             function aanwezig(leerling) {
@@ -26,15 +20,11 @@ require_once './connection.php';
 
 </script> 
 
+
         <link rel="stylesheet" type="text/css" href="opmaaklrs.css">
             <style>
 
             </style>
-
-
-           
-
-
             <meta charset="utf-8" />
             <title> Leerlingen Registratie Systeem </title>
     </head>
@@ -44,34 +34,34 @@ require_once './connection.php';
         </div>
         <nav>
 
-        </nav>
-        <div class="klas">
+</nav>
+<div class="klas">
 
 
-            <?php
-            $sql = "SELECT * FROM `leerling`";
-            $conn = connectToDb();
-            $result = $conn->query($sql);
+	<?php
+	$sql = "SELECT * FROM `leerling`";
+	$conn = connectToDb();
+	$result = $conn->query($sql);
 
 
-            echo "<div class='klas' > ";
+	echo "<div class='klas' > ";
 
 
-            while ($row = mysqli_fetch_array($result)) {
-                echo " <div class='leerling' > ";
-                echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=142  onclick='aanwezig(this)'></td>";
-            }
-            echo "</div >";
-            ?>
+	while ($row = mysqli_fetch_array($result)) {
+		echo " <div class='leerling' > ";
+		echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=142  onclick='aanwezig(this)'>";
+	}
+	echo "</div >";
+	?>
 
 
-            <div class="zoek">
-                Dit is test
-            </div>
+	<div class="zoek">
+		Dit is test
+	</div>
 
-        </div>
-        <footer>
-            Dit is een footer
-        </footer>
+</div>
+<footer>
+	Dit is een footer
+</footer>
     </body>
 </html>
