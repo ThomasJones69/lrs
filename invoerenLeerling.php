@@ -20,9 +20,16 @@ $schermvolgnr	=	berekenSchermVolgnr($klas)
 	$result = $conn->query($sql);
 	$row 	= mysqli_fetch_array($result) ;
 
-	if ($result->num_rows > 0) {	
-		$sql = "SELECT *   FROM `leerling`  where `naam` = ".$naam ;
-		
+	if ($result->num_rows == 0) {
+	
+	
+$sql(INSERT INTO `leerling`(`naam``foto`, `schermvolgnr`, `klas`) 
+
+
+VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9],[value-10])		
+	
+INSERT INTO `leerling`(`id`, `naam`, `adres`, `woonplaats`, `tel`, `telnood`, `telouders`, `foto`, `schermvolgnr`, `klas`) 
+VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9],[value-10])		
 	}
 	
 //	echo($sql);
