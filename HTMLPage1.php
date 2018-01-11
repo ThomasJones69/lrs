@@ -5,7 +5,8 @@ require_once './connection.php';
 
 <html>
     <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/lrsscript.js"></script>
 <script> 
 	
             function aanwezig(leerling) {
@@ -61,7 +62,7 @@ require_once './connection.php';
 
 </div>
 <footer>
-	Dit is een footer
+<button type="submit" onclick="myPopup()" value="Leerling opvoeren" >Opvoeren Leerling</button>
 </footer>
     </body>
 </html>

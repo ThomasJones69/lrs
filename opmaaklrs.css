@@ -29,3 +29,14 @@ footer{
     background-color: grey;
     height:60px;
 }
+
+button{
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: powderblue;
+}
+
+button:hover {
+    opacity: 0.5;
+}
