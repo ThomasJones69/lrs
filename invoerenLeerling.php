@@ -1,35 +1,30 @@
 <?php
-	session_start();
-	require_once './connection.php';
-?>
-<html>
-    <head>
+session_start();
+require_once './connection.php';
+/*
+$naam 			= 	$_REQUEST['naam'];
+$adres      	=	$_REQUEST['adres'];
+$woonplaats		=	$_REQUEST['woonplaats'];
+$tel			=	$_REQUEST['tel'];
+$telnood		=	$_REQUEST['telnood'];
+$telouders		=	$_REQUEST['telouders'];
+$foto			=	"/fotoos/default.jpg";
+$klas			=	$_REQUEST['klas'];
+$schermvolgnr	=	berekenSchermVolgnr($klas)
 
-<meta charset="utf-8" />
-<title> Leerlingen Registratie Systeem </title>
-</head>
-<body>
+*/
 
+	$naam 	= "aswertwer";
+	$conn 	= connectToDb();
+	$sql = "SELECT *   FROM `leerling`  where `naam` = ".$naam ;
+	$result = $conn->query($sql);
+	$row 	= mysqli_fetch_array($result) ;
 
-<link rel="stylesheet" type="text/css" href="opmaaklrs.css">
-<meta charset="utf-8" />
-<title> Leerlingen Registratie Systeem </title>
-
-<div class="banner">
-	<header>LRS</header>
-</div>
-<nav>
-
-</nav>
-
-<div class="klas">
-
-<?php
-
-
+	if ($result->num_rows > 0) {	
+		$sql = "SELECT *   FROM `leerling`  where `naam` = ".$naam ;
+		
+	}
 	
-	
-	$sql = "SELECT *   FROM `aanwezigheid` JOIN  `leerling`  on  `leerling`.`id` =  `aanwezigheid`.`leerling_id` " ;
 //	echo($sql);
 	$conn              = connectToDb();
 	$result            = $conn->query($sql);
@@ -47,7 +42,38 @@
 	}
 	echo "</div >";
 	
-	
+*/	
+	function berekenSchermVolgnr($par_klas){
+
+	$eruit=1;
+	$conn              = connectToDb();
+	$par_klas = 3;
+//	echo $par_klas ;
+//	$sql = 
+	$sql = "SELECT MAX(schermvolgnr) AS maxSchermVolgnr FROM leerling where `klas` = ".$par_klas;
+//	echo $sql;
+//	echo "\n";
+	$result = $conn->query($sql);
+	$row = mysqli_fetch_array($result) ;
+//	echo $result->num_rows;
+	if (isset($row['maxSchermVolgnr'])) {
+//		echo $row['maxSchermVolgnr'];
 		
+		$eruit = $row['maxSchermVolgnr'];
+		
+//		echo "\n";
+	} else	{
+		$eruit = 1;
+	}
 	
+//	echo $eruit;
+//	print_r($eruit);
+			
+	$conn->close();
+//	echo "\n";
+	
+	return(eruit);
+	
+	}
 ?>      
+
