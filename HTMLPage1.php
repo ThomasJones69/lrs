@@ -61,7 +61,7 @@ require_once './connection.php';
 
 </div>
 <footer>
-	Dit is een footer
+<button type="submit" onclick="myPopup()" value="Leerling opvoeren" >Opvoeren Leerling</button>
 </footer>
     </body>
 </html>
