@@ -49,7 +49,7 @@ require_once './connection.php';
 
 	while ($row = mysqli_fetch_array($result)) {
 		echo " <div class='leerling' > ";
-		echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=142  onclick='aanwezig(this)'>";
+		echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='aanwezig(this)'>";
 	}
 	echo "</div >";
 	?>

@@ -8,7 +8,7 @@ $woonplaats		=	$_REQUEST['woonplaats'];
 $tel			=	$_REQUEST['tel'];
 $telnood		=	$_REQUEST['telnood'];
 $telouders		=	$_REQUEST['telouders'];
-$foto			=	"/fotoos/default.jpg";
+$foto			=	"fotoos/default.jpg";
 $klas			=	$_REQUEST['klas'];
 $schermvolgnr	=	berekenSchermVolgnr($klas)
 
@@ -16,26 +16,37 @@ $schermvolgnr	=	berekenSchermVolgnr($klas)
 
 	$naam 	= "aswertwer";
 	$conn 	= connectToDb();
-	$sql = "SELECT *   FROM `leerling`  where `naam` = ".$naam ;
+	$sql = "SELECT *   FROM `leerling`  where `naam` = '$naam' ";
+//	$sql = "SELECT *   FROM `leerling`  ";
+//	echo $sql;
 	$result = $conn->query($sql);
-	$row 	= mysqli_fetch_array($result) ;
-	if ( mysqli_num_rows($row) == 0 ) {
+/*	while ($row = mysqli_fetch_array($result)){
+		echo $row['naam'];
+	
+	}
+	var_dump($result);
+	var_dump($row);
+*/	
+	
+	if ( $result->num_rows  == 0 ) {
 		$klas 			= 1;
 		$schermvolgnr	=	berekenSchermVolgnr($klas);	
 		$foto			=	"/fotoos/default.jpg";
 		
 	
-		$sql = "INSERT INTO `leerling`(`naam``foto`, `schermvolgnr`, `klas`)" 
+		$sql = "INSERT INTO `leerling`(`naam`, `foto`, `schermvolgnr`, `klas`)" 
 		. "VALUES ('$naam', '$foto' , '$schermvolgnr' , '$klas')";
 		
 	
 		//INSERT INTO `leerling`(`id`, `naam`, `adres`, `woonplaats`, `tel`, `telnood`, `telouders`, `foto`, `schermvolgnr`, `klas`) 
 		// VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9],[value-10])		
-	}
+		echo($sql);
+		$conn              = connectToDb();
+		$result            = $conn->query($sql);
+
+		
+		}
 	
-	echo($sql);
-	$conn              = connectToDb();
-	$result            = $conn->query($sql);
 	
 	
 	
@@ -56,9 +67,7 @@ $schermvolgnr	=	berekenSchermVolgnr($klas)
 //	echo $result->num_rows;
 	if (isset($row['maxSchermVolgnr'])) {
 //		echo $row['maxSchermVolgnr'];
-		
 		$eruit = $row['maxSchermVolgnr'];
-		
 //		echo "\n";
 	} else	{
 		$eruit = 1;
