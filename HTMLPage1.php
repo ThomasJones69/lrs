@@ -40,7 +40,7 @@ require_once './connection.php';
     </head>
     <body>
         <div class="banner">
-            <header>LRS</header>
+            <header>Leerling Registratie Systeem</header>
         </div>
         <nav>
 
