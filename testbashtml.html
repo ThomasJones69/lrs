@@ -1,11 +1,17 @@
+<!DOCTYPE html>
 
-// creeer popup element
-function myPopup(){
-//                alert('werkt' + " " + img.id + " " +    img.src );
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function myPopup(img){
+                alert('werkt' + " " + img.id + " " +    img.src );
                 var popup = document.createElement("div");
                 var form = document.createElement("form");
                 form.setAttribute("action","invoerenLeerling");
-                form.setAttribute("method","get");
+                form.setAttribute("method","post");
                 
                     
                 var naam = document.createElement("input");
@@ -47,9 +53,9 @@ function myPopup(){
                 submit.setAttribute("id","submitKnop");
                 submit.addEventListener("click", mySubmit);
                                             
-//                var afb = document.createElement("img");
-//                afb.setAttribute("class", "classafb");
-//                afb.setAttribute("src", img.src );
+                var afb = document.createElement("img");
+                afb.setAttribute("class", "classafb");
+                afb.setAttribute("src", img.src );
                 
                 //sluitknop
                 var sluitknop = document.createElement("button");
@@ -65,19 +71,87 @@ function myPopup(){
                 form.appendChild(telOuders);
                 form.appendChild(klasnr);
                               
-
+                popup.appendChild(afb);
                 popup.appendChild(sluitknop);
                 popup.appendChild(form);
                 popup.appendChild(submit);  
                 popup.setAttribute("class", "popupnaam");
-                var popupvak = document.getElementById("afbContainer");
+                var popupvak = document.getElementById("testvak");
                 popupvak.appendChild(popup);
                 
                
             }
-            //submit form in popup
                 function mySubmit(){
                       alert("ben bij addEvent");
                       document.getElementById("myForm").submit();
                 }
-//                thomas
+                
+                
+                        
+        </script>
+        <style>
+            .popupnaam{
+                position: relative;
+                z-index: 9;
+                top:-90%;
+                margin-left: 50%;
+                border: 1px solid red;
+                background-color: #ffff99;
+                border-radius: 8px;
+                width: 390px;
+                height: 380px;
+                box-shadow: 10px 10px black;             
+            }
+            #testvak{
+                box-sizing: border-box;
+                display: inline-block;
+                height: 250px;
+                width: 250px;             
+                padding: 20px;              
+            }
+            body {
+               
+                padding: 20px;
+            }
+            #container{
+                
+                padding: 20px;
+            }
+            img{
+                border: 4px solid red;
+                width: 100%;
+                Height: 100%;              
+            }
+            
+            img:hover{
+               border: 4px solid black;  
+               opacity: .5;                           
+            }
+            .classafb{
+                height: 20%;
+                width: 20%;
+                margin: 5px;
+                border-radius: 10px;
+                border: 2px solid red;  
+                
+            }
+            form{
+                padding:5px;
+            }
+            
+            input{
+                height: 30px;
+                margin: 5px;
+                padding: 2px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="testvak">             
+                <img class="myImage"id="1" src="fotoos/eend9.jpg" onclick="myPopup(this)">
+            </div>                        
+        </div>
+    </body>
+</html>
+    
