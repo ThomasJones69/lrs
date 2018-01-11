@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 10 jan 2018 om 14:53
+-- Gegenereerd op: 11 jan 2018 om 13:33
 -- Serverversie: 10.1.29-MariaDB
 -- PHP-versie: 7.2.0
 
@@ -45,10 +45,22 @@ INSERT INTO `aanwezigheid` (`leerling_id`, `datum`, `tijd`, `absentiecode`, `kla
 (1, '2018-01-10', 1448, 0, 1),
 (1, '2018-01-10', 1450, 0, 1),
 (1, '2018-01-10', 1451, 0, 1),
+(1, '2018-01-10', 1600, 0, 1),
+(1, '2018-01-11', 1100, 0, 1),
+(1, '2018-01-11', 1332, 0, 1),
 (2, '2018-01-10', 1450, 0, 1),
 (2, '2018-01-10', 1451, 0, 1),
+(2, '2018-01-11', 1101, 0, 1),
+(2, '2018-01-11', 1322, 0, 1),
+(2, '2018-01-11', 1332, 0, 1),
 (3, '2018-01-10', 1450, 0, 1),
-(3, '2018-01-10', 1451, 0, 1);
+(3, '2018-01-10', 1451, 0, 1),
+(3, '2018-01-10', 1516, 0, 1),
+(3, '2018-01-10', 1559, 0, 1),
+(3, '2018-01-11', 1322, 0, 1),
+(3, '2018-01-11', 1332, 0, 1),
+(4, '2018-01-11', 1328, 0, 1),
+(4, '2018-01-11', 1332, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -113,9 +125,10 @@ CREATE TABLE `leerling` (
 --
 
 INSERT INTO `leerling` (`id`, `naam`, `adres`, `woonplaats`, `tel`, `telnood`, `telouders`, `foto`, `schermvolgnr`, `klas`) VALUES
-(1, 'Piet Jansen', 'Kerkstraat 26', 'Zwolle', '06123456789', '06123456789', '06123456789', './fotoos/eend1.jpg', 1, 1),
-(2, 'Klaas Klaasen', 'Dorpstraat 12', 'Hardenberg', '06123456789', '06123456789', '06123456789', './fotoos/eend2.jpg', 2, 1),
-(3, 'school boy', 'kerlaan 22', 'amsterdam', '06123456789', '06123456789', '06123456789', 'fotoos/schoolboy.png', 3, 1);
+(1, 'Bas Gehin', 'Kerkstraat 26', 'Zwolle', '06123456789', '06123456789', '06123456789', './fotoos/bas.jpg', 1, 1),
+(2, 'Thomas Jones', 'Dorpstraat 12', 'Hardenberg', '06123456789', '06123456789', '06123456789', './fotoos/thomas.jpg', 2, 1),
+(3, 'Khaldoon', 'kerlaan 22', 'amsterdam', '06123456789', '06123456789', '06123456789', 'fotoos/khaldoon.jpg', 3, 1),
+(4, 'gggggg', '', '', '', '', '', 'fotoos/erik.jpg', 0, 0);
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -153,7 +166,7 @@ ALTER TABLE `leerling`
 -- AUTO_INCREMENT voor een tabel `aanwezigheid`
 --
 ALTER TABLE `aanwezigheid`
-  MODIFY `leerling_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `leerling_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT voor een tabel `absentie`
@@ -171,7 +184,7 @@ ALTER TABLE `klas`
 -- AUTO_INCREMENT voor een tabel `leerling`
 --
 ALTER TABLE `leerling`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
