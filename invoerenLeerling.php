@@ -1,6 +1,15 @@
 <?php
 session_start();
 require_once './connection.php';
+?>
+
+<html>
+<form>
+	
+
+
+
+<?php
 /*
 $naam 			= 	$_REQUEST['naam'];
 $adres      	=	$_REQUEST['adres'];
@@ -14,7 +23,7 @@ $schermvolgnr	=	berekenSchermVolgnr($klas)
 
 */
 
-	$naam 	= "aswertwer";
+	$naam 	= "aswasdfertwer";
 	$conn 	= connectToDb();
 	$sql = "SELECT *   FROM `leerling`  where `naam` = '$naam' ";
 //	$sql = "SELECT *   FROM `leerling`  ";
@@ -84,3 +93,4 @@ $schermvolgnr	=	berekenSchermVolgnr($klas)
 	}
 ?>      
 
+</html>
