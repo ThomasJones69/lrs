@@ -20,15 +20,19 @@ require_once './connection.php';
 
 </script> 
 
-<link rel="stylesheet" type="text/css" href="opmaaklrs.css">
-<meta charset="utf-8" />
-<title> Leerlingen Registratie Systeem </title>
-</head>
-<body>
-<div class="banner">
-	<header>LRS</header>
-</div>
-<nav>
+
+        <link rel="stylesheet" type="text/css" href="opmaaklrs.css">
+            <style>
+
+            </style>
+            <meta charset="utf-8" />
+            <title> Leerlingen Registratie Systeem </title>
+    </head>
+    <body>
+        <div class="banner">
+            <header>Leerling Registratie Systeem</header>
+        </div>
+        <nav>
 
 </nav>
 <div class="klas">
