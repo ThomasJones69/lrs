@@ -4,7 +4,8 @@ function myPopup(){
 //                alert('werkt' + " " + img.id + " " +    img.src );
                 var popup = document.createElement("div");
                 var form = document.createElement("form");
-                form.setAttribute("action","invoerenLeerling");
+                form.setAttribute("action","invoerenLeerling.php");
+				form.setAttribute("id","myForm");
                 form.setAttribute("method","get");
                 
                     
@@ -22,21 +23,21 @@ function myPopup(){
                 woonplaats.setAttribute("placeholder","Woonplaats");
                               
                 var tel = document.createElement("input");
-                tel.setAttribute("tel","tel");
+                tel.setAttribute("name","tel");
                 tel.setAttribute("placeholder","telefoonnummer");
                               
                 var telNood = document.createElement("input");
-                telNood.setAttribute("name","telNood");
+                telNood.setAttribute("name","telnood");
                 telNood.setAttribute("placeholder","tel.bij noodgeval");
                 telNood.setAttribute("class","popupForm");
                 telNood.style.margin = "5px";
-                
+				
                 var telOuders = document.createElement("input");
-                telOuders.setAttribute("name","telOuders");
+                telOuders.setAttribute("name","telouders");
                 telOuders.setAttribute("placeholder","Telefoon ouders");
                              
                 var klasnr = document.createElement("input");
-                klasnr.setAttribute("name","klasnummer");
+                klasnr.setAttribute("name","klas");
                 klasnr.setAttribute("placeholder","Klasnummer");
                 klasnr.setAttribute("type","number");
                 
