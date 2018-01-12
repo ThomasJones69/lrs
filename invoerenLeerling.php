@@ -11,13 +11,41 @@ $foto			=	"fotoos/default.jpg";
 $klas			=	$_REQUEST['klas'];
 $schermvolgnr	=	berekenSchermVolgnr($klas);
 
+// In PHP versions earlier than 4.1.0, $HTTP_POST_FILES should be used instead
+// of $_FILES.
+//C:\xampp\htdocs\lrs\fotoos
+//var_dump($_FILES);
+
+$uploaddir = 'fotoos/';
+$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+echo "uploadfile";
+echo $uploadfile;
+//echo '<pre>';
+if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
+    echo "File is valid, and was successfully uploaded.\n";
+} else {
+    echo "Possible file upload attack!\n";
+}
+
+//echo 'Here is some more debugging info:';
+//print_r($_FILES);
+
+//print "</pre>";
+
+
+$foto = $uploadfile;
+
+echo $foto;
+
+
+
 $conn 	= connectToDb();
 $sql = "SELECT *   FROM `leerling`  where `naam` = '$naam' ";
 $result = $conn->query($sql);
 
 if ( $result->num_rows  == 0 ) {
 	$schermvolgnr	=	berekenSchermVolgnr($klas);	
-	$foto			=	"fotoos/default.jpg";
+//	$foto			=	"fotoos/default.jpg";
 
 	$sql = "INSERT INTO `leerling`(`naam`, `adres`, `woonplaats`, `tel`, `telnood`, `telouders`, `foto`, `schermvolgnr`, `klas`) "
 		   . "VALUES ( '$naam', '$adres' , '$woonplaats' , '$tel' , '$telnood' , '$telouders' , '$foto','$schermvolgnr','$klas') "; 		
