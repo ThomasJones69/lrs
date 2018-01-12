@@ -3,6 +3,8 @@
 function myPopup() {
 //                alert('werkt' + " " + img.id + " " +    img.src );
     var popup = document.createElement("div");
+    popup.setAttribute("id","test")
+    
     var form = document.createElement("form");
     form.setAttribute("action", "invoerenLeerling.php");
     form.setAttribute("id", "myForm");
@@ -63,7 +65,6 @@ function myPopup() {
      var fotoText = document.createElement("p");
      var fotoInnerText = document.createTextNode("Foto ophalen:");
      fotoText.appendChild(fotoInnerText);
-     fotoText.setAttribute("padding","5px")
      
      var userFile = document.createElement("input");
      userFile.setAttribute("name","userfile");
@@ -74,6 +75,8 @@ function myPopup() {
     var sluitknop = document.createElement("button");
     var t = document.createTextNode("X");
     sluitknop.appendChild(t);
+    sluitknop.addEventListener("click",cancelPopup);
+
     //toevoegen child aan parent 
     form.appendChild(loadAfb);
     form.appendChild(fotoText);
@@ -114,3 +117,24 @@ function aanwezig(leerling) {
     });
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      function cancelPopup() {
+       // var item = document.getElementById("netbeans_glasspane");
+        alert("wat");
+       document.getElementById("test").parentNode.removeChild(document.getElementById("test"));
+}
