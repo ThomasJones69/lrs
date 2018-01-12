@@ -22,24 +22,24 @@ require_once './connection.php';
         </nav>
 
         <div class="klas">
-
             <?php
-            $sql = "SELECT *   FROM `aanwezigheid` JOIN  `leerling`  on  `leerling`.`id` =  `aanwezigheid`.`leerling_id` ";
-//	echo($sql);
+            $sql = "SELECT * , `leerling`.`id` as `leerlingID`  FROM `aanwezigheid` JOIN  `leerling`  on  `leerling`.`id` =  `aanwezigheid`.`leerling_id` ";
+			$sql = $sql .                        " JOIN  `absentie`  on  `absentie`.`id` =  `aanwezigheid`.`absentiecode`";
+//			echo($sql);
             $conn = connectToDb();
             $result = $conn->query($sql);
 
 
             $vorigID = 9999999;
             while ($row = mysqli_fetch_array($result)) {
-                if ($vorigID != $row['id']) {
+                if ($vorigID != $row['leerlingID']) {
                     echo " <div class='leerling' > \n";
                     echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=100px  ></div> \n";
                     echo "<div class='leerling'>" . $row['naam'] . " </div>\n";
-                    $vorigID = $row['id'];
+                    $vorigID = $row['leerlingID'];
                     echo "<div class='leerling> </div>\n";
                 }
-                echo "<div class='leerling'>" . $row['datum'] . " tijd " . $row['tijd'] . " </div>\n";
+                echo "<div class='leerling'>" . $row['datum'] . " tijd " . $row['tijd'] ." ". $row['signalering'] . " </div>\n";
                 echo "<div class='leerling> </div>\n";
             }
             echo "</div >";

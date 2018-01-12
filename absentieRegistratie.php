@@ -8,8 +8,8 @@ require_once './connection.php';
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="lrsscript.js"></script>
 <script>
-function aanwezig(leerling) {
-//Function voor het registeren van de leerling, werkt niet vanuit de js file
+function afwezig(leerling) {
+//Function  werkt niet vanuit de js file
     console.log(leerling.id);
 
     $.post("registreerAanwezigheid.php", {leerlingID: leerling.id}, function (data, status) {
@@ -26,32 +26,11 @@ function aanwezig(leerling) {
 
         </style>
         <meta charset="utf-8" />
-        <title> Leerlingen Registratie Systeem </title>
+        <title> Leerlingen Absentie Registratie </title>
     </head>
     <body>
-<!--        <div class="banner">
-            <header>Leerling Registratie Systeem</header>-->
-            <header>Leerling Registratie Systeem
-    <nav>
-	<div class="main-wrapper">
-		<ul>
-                    <li><a href="HTMLPage1.php">Hoofdpagina</a></li>
-		</ul>
-            <!--		<div class="nav-login">-->
-                
-                <ul>
-                    <li><a href="invoerenLeerling.php">Leerlingen</a></li>
-		</ul>
-        <!--		<div class="nav-login">-->
-                <ul>
-                    <li><a href="registreerAanwezigheid.php">Aanwezigheid</a></li>
-		</ul>
-
-	</div>
-
-    </nav>
-	
-</header>
+        <div class="banner">
+            <header>Leerling Absentie Registratie</header>
         </div>
         <nav>
 
@@ -59,8 +38,16 @@ function aanwezig(leerling) {
         <div class="klas">
 
 
-            <?php
-            $sql = "SELECT * FROM `leerling`";
+    <?php
+			
+	$huidigeDatum = date("Y-m-d");
+	$huidigeTijd  = date("Hi");
+
+			
+$sql = "SELECT * , `leerling`.`id` as `leerlingID`  FROM `aanwezigheid` JOIN  `leerling`  on  `leerling`.`id` =  `aanwezigheid`.`leerling_id` where `aanwezigheid`.`datum` != '$huidigeDatum'";			
+echo $sql;
+//            $sql = "SELECT * , `leerling`.`id` as `leerlingID`  FROM `aanwezigheid` JOIN  `leerling`  on  `leerling`.`id` =  `aanwezigheid`.`leerling_id` where "; 
+//            $sql = "SELECT * FROM `leerling`";
             $conn = connectToDb();
             $result = $conn->query($sql);
 
@@ -70,7 +57,7 @@ function aanwezig(leerling) {
 
             while ($row = mysqli_fetch_array($result)) {
                 echo " <div class='leerling' id='afbContainer'> ";
-                echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='aanwezig(this)'>";
+                echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='afwezig(this)'>";
             }
             echo "</div >";
             ?>
@@ -81,10 +68,10 @@ function aanwezig(leerling) {
             </div>
 
             <div class="button">
-                <button id="newstudent" type="submit" onclick="myPopup()" value="Leerling opvoeren" >Opvoeren Leerling</button> 
+                <button type="submit" onclick="myPopup()" value="Leerling opvoeren" >Opvoeren Leerling</button> 
             </div>
 
-        </div>  
+        </div>
         <footer>
             ITPH project mede mogelijk gemaakt door: Thomas, Bas, Gerard en Derk
         </footer>
