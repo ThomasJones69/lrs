@@ -60,7 +60,7 @@ function aanwezig(leerling) {
             </div>
 
             <div class="button">
-                <button type="submit" onclick="myPopup()" value="Leerling opvoeren" >Opvoeren Leerling</button> 
+                <button id="newstudent" type="submit" onclick="myPopup()" value="Leerling opvoeren" >Opvoeren Leerling</button> 
             </div>
 
         </div>

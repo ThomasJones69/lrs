@@ -43,11 +43,19 @@ footer{
 
 }
 
-button{
+#newstudent{
+    float: left;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    background-color: powderblue;
+    background-color: cornflowerblue;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: auto;
+    box-shadow: 10px 10px 5px #888888;
 }
 
 button:hover {
@@ -117,7 +125,7 @@ width: 80%;
 img{
     border: 1px solid red;
     border-radius: 10px;
-    width: 87px;
-    height: 87px;
+    width: 130px;
     margin: 5px;
+    object-fit: contain
 }
