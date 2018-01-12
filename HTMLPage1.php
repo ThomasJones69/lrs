@@ -7,6 +7,19 @@ require_once './connection.php';
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="lrsscript.js"></script>
+<script>
+function aanwezig(leerling) {
+//Function voor het registeren van de leerling, werkt niet vanuit de js file
+    console.log(leerling.id);
+
+    $.post("registreerAanwezigheid.php", {leerlingID: leerling.id}, function (data, status) {
+//			$.post("./registreerAanwezigheid.php",  function(data){                                          
+//				alert("Data: " + data + "\nStatus: " + status);
+//				$('#somediv').html(data);
+    });
+}
+
+</script>
 
         <link rel="stylesheet" type="text/css" href="opmaaklrs.css">
         <style>
