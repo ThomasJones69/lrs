@@ -16,8 +16,29 @@ require_once './connection.php';
             <title> Leerlingen Registratie Systeem </title>
     </head>
     <body>
-        <div class="banner">
-            <header>Leerling Registratie Systeem</header>
+<!--        <div class="banner">
+            <header>Leerling Registratie Systeem</header>-->
+            <header>Leerling Registratie Systeem
+    <nav>
+	<div class="main-wrapper">
+		<ul>
+                    <li><a href="HTMLPage1.php">Hoofdpagina</a></li>
+		</ul>
+            <!--		<div class="nav-login">-->
+                
+                <ul>
+                    <li><a href="invoerenLeerling.php">Leerlingen</a></li>
+		</ul>
+        <!--		<div class="nav-login">-->
+                <ul>
+                    <li><a href="registreerAanwezigheid.php">Aanwezigheid</a></li>
+		</ul>
+
+	</div>
+
+    </nav>
+	
+</header>
         </div>
         <nav>
 

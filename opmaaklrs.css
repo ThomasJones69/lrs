@@ -10,16 +10,16 @@
 
 }
 
-header{
+/*header{
     color: red;
     font-size: 30px;
     text-align: center;
-}
+}*/
 
-nav{
+/*nav{
     height:30px;
     background-color: grey;
-}
+}*/
 .zoek{
     background-color: blue;
     width: 142px;
@@ -93,3 +93,33 @@ button:hover {
                 padding: 2px;
             }
 /*            end opmaak button*/
+
+/*navigatie balk*/
+
+.main-wrapper{
+    margin: 0 auto;
+    width: 1000px;
+}
+
+header nav{
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+}
+
+header nav ul{
+   float: left;
+}
+
+header nav ul li{
+   float: left;
+   list-style: none;
+    margin-right: 30px;
+}
+
+header nav ul li a{
+   font-family: arial;
+   font-size: 16px;
+   color: #111;
+   line-height: 63px;
+}
