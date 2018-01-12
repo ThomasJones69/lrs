@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once './connection.php';
+echo showHeader();
 
 /*	$item      = $_SESSION['item'];
 	$desc      = $_SESSION['desc'];
