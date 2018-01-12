@@ -45,21 +45,27 @@ function afwezig(leerling) {
 		$eruit = false;
 		$huidigeDatum = date("Y-m-d");
 		$huidigeTijd  = date("Hi");
-
 		$conn = connectToDb();
-		$sql = "SELECT * FROM aanwezigheid where `leerling_id` = ".$paramLeerlingID ." and datum == '$huidigeDatum'" ;
-		echo $sql;
+		$sql = "SELECT * FROM aanwezigheid where `leerling_id` = ".$paramLeerlingID .
+		" and datum = '$huidigeDatum'" ;
+//		echo $sql;
 		$result = $conn->query($sql);
-		$row = mysqli_fetch_array($result) ;
-		if (isset($row['leerling_id'])) {
+		if ($result) {
+			$row = mysqli_fetch_array($result) ;
+			if (isset($row['leerling_id'])) {
+//				echo " 56 ";
+				$eruit = false ;
+			} else	{
+				//echo " 59 ";
+				$eruit = true;
+			}
+		}  else {
+//			echo " 63 ";
 			
-			$eruit = true ;
-		} else	{
-			$eruit = false;
+			$eruit = true;
 		}
 		$conn->close();
-	return($eruit);
-		
+		return($eruit);
 	}
 			
 	$huidigeDatum = date("Y-m-d");
@@ -67,9 +73,9 @@ function afwezig(leerling) {
 
 			
 //$sql = "SELECT * , `leerling`.`id` as `leerlingID`  FROM `aanwezigheid` JOIN  `leerling`  on  `leerling`.`id` =  `aanwezigheid`.`leerling_id` where `aanwezigheid`.`datum` != '$huidigeDatum'";			
-	echo $sql;
 //            $sql = "SELECT * , `leerling`.`id` as `leerlingID`  FROM `aanwezigheid` JOIN  `leerling`  on  `leerling`.`id` =  `aanwezigheid`.`leerling_id` where "; 
-            $sql = "SELECT * FROM `leerling`";
+            $sql = "SELECT * FROM `leerling`  order by `schermvolgnr";
+//	echo $sql;
             $conn = connectToDb();
             $result = $conn->query($sql);
 
