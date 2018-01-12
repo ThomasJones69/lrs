@@ -84,7 +84,7 @@ function aanwezig(leerling) {
                 <button id="newstudent" type="submit" onclick="myPopup()" value="Leerling opvoeren" >Opvoeren Leerling</button> 
             </div>
 
-        </div>
+        </div>  
         <footer>
             ITPH project mede mogelijk gemaakt door: Thomas, Bas, Gerard en Derk
         </footer>
