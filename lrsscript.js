@@ -3,13 +3,13 @@
 function myPopup() {
 //                alert('werkt' + " " + img.id + " " +    img.src );
     var popup = document.createElement("div");
-    popup.setAttribute("id","test")
-    
+    popup.setAttribute("id", "test")
+
     var form = document.createElement("form");
     form.setAttribute("action", "invoerenLeerling.php");
     form.setAttribute("id", "myForm");
     form.setAttribute("method", "post");
-    form.setAttribute("enctype","multipart/form-data")
+    form.setAttribute("enctype", "multipart/form-data")
 
 
     var naam = document.createElement("input");
@@ -57,25 +57,25 @@ function myPopup() {
 
 
 //  Uploaden foto
-     var loadAfb = document.createElement("input");
-     loadAfb.setAttribute("type","hidden");
-     loadAfb.setAttribute("name","MAX_FILE_SIZE");
-     loadAfb.setAttribute("value","40000");
-        
-     var fotoText = document.createElement("p");
-     var fotoInnerText = document.createTextNode("Foto ophalen:");
-     fotoText.appendChild(fotoInnerText);
-     
-     var userFile = document.createElement("input");
-     userFile.setAttribute("name","userfile");
-     userFile.setAttribute("type","file");
-     
+    var loadAfb = document.createElement("input");
+    loadAfb.setAttribute("type", "hidden");
+    loadAfb.setAttribute("name", "MAX_FILE_SIZE");
+    loadAfb.setAttribute("value", "40000");
+
+    var fotoText = document.createElement("p");
+    var fotoInnerText = document.createTextNode("Foto ophalen:");
+    fotoText.appendChild(fotoInnerText);
+
+    var userFile = document.createElement("input");
+    userFile.setAttribute("name", "userfile");
+    userFile.setAttribute("type", "file");
+
 
     //sluitknop
     var sluitknop = document.createElement("button");
     var t = document.createTextNode("X");
     sluitknop.appendChild(t);
-    sluitknop.addEventListener("click",cancelPopup);
+    sluitknop.addEventListener("click", cancelPopup);
 
     //toevoegen child aan parent 
     form.appendChild(loadAfb);
@@ -116,6 +116,84 @@ function aanwezig(leerling) {
 //				$('#somediv').html(data);
     });
 }
+// popup absentie
+function myPopup_absentie(img) {
+    var afbinhoud = img;
+    alert(afbinhoud.id + afbinhoud.src);
+
+    var popup = document.createElement("div");
+    popup.setAttribute("id", "test")
+
+    var form = document.createElement("form");
+    form.setAttribute("action", "invoerenLeerling.php");
+    form.setAttribute("id", "myForm");
+    form.setAttribute("method", "get");
+    form.setAttribute("enctype", "multipart/form-data");
+
+    var id = document.createElement("input");
+    id.setAttribute("type", "hidden");
+    id.setAttribute("name", "leerlingID");
+    var idText = document.createTextNode(afbinhoud.id);
+    id.appendChild(idText);
+
+    var textbox = document.createElement("p");
+    var innerbox = document.createTextNode("Selecteer reden");
+    textbox.appendChild(innerbox);
+
+    //submitknop
+    var submit = document.createElement("input");
+    submit.setAttribute("type", "button");
+    submit.setAttribute("value", "submit");
+    submit.setAttribute("id", "submitKnop");
+    submit.addEventListener("click", mySubmit);
+
+    var afb = document.createElement("img");
+    afb.setAttribute("class", "classafb");
+    afb.setAttribute("id", "afb_absentie");
+    afb.setAttribute("src", afbinhoud.src);
+
+    //sluitknop
+    var sluitknop = document.createElement("button");
+    var t = document.createTextNode("X");
+    sluitknop.appendChild(t);
+    sluitknop.addEventListener("click", cancelPopup);
+
+    //droplist
+    var select = document.createElement("select");
+    var option1 = document.createElement("option");
+    option1.setAttribute("value", "ziek");
+    var txt1 = document.createTextNode("ziek");
+    option1.appendChild(txt1);
+    select.appendChild(option1);
+
+    var option2 = document.createElement("option");
+    option2.setAttribute("value", "verslapen");
+    var txt2 = document.createTextNode("verslapen");
+    option2.appendChild(txt2);
+    select.appendChild(option2);
+
+
+    //toevoegen child aan parent 
+    form.appendChild(afb);
+    form.appendChild(id);
+    form.appendChild(textbox);
+    form.appendChild(select);
+
+    popup.appendChild(sluitknop);
+    popup.appendChild(form);
+    id
+
+    popup.appendChild(submit);
+    popup.setAttribute("class", "popupnaam");
+    var popupvak = document.getElementById("afbContainer");
+    popupvak.appendChild(popup);
+
+
+}
+//submit form in popup
+function mySubmit() {
+    document.getElementById("myForm").submit();
+}
 
 
 
@@ -130,11 +208,7 @@ function aanwezig(leerling) {
 
 
 
-
-
-
-      function cancelPopup() {
-       // var item = document.getElementById("netbeans_glasspane");
-        alert("wat");
-       document.getElementById("test").parentNode.removeChild(document.getElementById("test"));
+// popup deleten
+function cancelPopup() {
+    document.getElementById("test").parentNode.removeChild(document.getElementById("test"));
 }

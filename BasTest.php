@@ -36,7 +36,7 @@ require_once './connection.php';
 
             while ($row = mysqli_fetch_array($result)) {
                 echo " <div class='leerling' id='afbContainer'> ";
-                echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='aanwezig(this)'>";
+                echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='myPopup_absentie(this)'>";
             }
             echo "</div >";
             ?>
@@ -47,7 +47,7 @@ require_once './connection.php';
             </div>
 
             <div class="button">
-                <button type="submit" onclick="myPopup()" value="Leerling opvoeren" >Opvoeren Leerling</button> 
+                <button type="submit" onclick="myPopup()" value="Leerling opvoeren" >Opvoeren Leerling</button>
             </div>
 
         </div>  
