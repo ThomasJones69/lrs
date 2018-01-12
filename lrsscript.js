@@ -6,7 +6,7 @@ function myPopup() {
     var form = document.createElement("form");
     form.setAttribute("action", "invoerenLeerling.php");
     form.setAttribute("id", "myForm");
-    form.setAttribute("method", "get");
+    form.setAttribute("method", "post");
     form.setAttribute("enctype","multipart/form-data")
 
 
@@ -58,7 +58,7 @@ function myPopup() {
      var loadAfb = document.createElement("input");
      loadAfb.setAttribute("type","hidden");
      loadAfb.setAttribute("name","MAX_FILE_SIZE");
-     loadAfb.setAttribute("value","30000");
+     loadAfb.setAttribute("value","40000");
         
      var fotoText = document.createElement("p");
      var fotoInnerText = document.createTextNode("Foto ophalen:");
