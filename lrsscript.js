@@ -133,16 +133,6 @@ function aanwezig(leerling) {
 
 
 
-
-
-
-
-
-
-
-
-
-
       function cancelPopup() {
        // var item = document.getElementById("netbeans_glasspane");
         alert("wat");
