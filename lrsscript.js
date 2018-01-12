@@ -3,10 +3,13 @@
 function myPopup() {
 //                alert('werkt' + " " + img.id + " " +    img.src );
     var popup = document.createElement("div");
+    popup.setAttribute("id","test")
+    
     var form = document.createElement("form");
     form.setAttribute("action", "invoerenLeerling.php");
     form.setAttribute("id", "myForm");
-    form.setAttribute("method", "get");
+    form.setAttribute("method", "post");
+    form.setAttribute("enctype","multipart/form-data")
 
 
     var naam = document.createElement("input");
@@ -52,11 +55,32 @@ function myPopup() {
 //                afb.setAttribute("class", "classafb");
 //                afb.setAttribute("src", img.src );
 
+
+//  Uploaden foto
+     var loadAfb = document.createElement("input");
+     loadAfb.setAttribute("type","hidden");
+     loadAfb.setAttribute("name","MAX_FILE_SIZE");
+     loadAfb.setAttribute("value","40000");
+        
+     var fotoText = document.createElement("p");
+     var fotoInnerText = document.createTextNode("Foto ophalen:");
+     fotoText.appendChild(fotoInnerText);
+     
+     var userFile = document.createElement("input");
+     userFile.setAttribute("name","userfile");
+     userFile.setAttribute("type","file");
+     
+
     //sluitknop
     var sluitknop = document.createElement("button");
     var t = document.createTextNode("X");
     sluitknop.appendChild(t);
-    //toevoegen child aan parent        
+    sluitknop.addEventListener("click",cancelPopup);
+
+    //toevoegen child aan parent 
+    form.appendChild(loadAfb);
+    form.appendChild(fotoText);
+    form.appendChild(userFile);
     form.appendChild(naam);
     form.appendChild(adres);
 
@@ -93,3 +117,24 @@ function aanwezig(leerling) {
     });
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      function cancelPopup() {
+       // var item = document.getElementById("netbeans_glasspane");
+        alert("wat");
+       document.getElementById("test").parentNode.removeChild(document.getElementById("test"));
+}
