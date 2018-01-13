@@ -12,7 +12,7 @@ function afwezig(leerling) {
 //Function  werkt niet vanuit de js file
     console.log(leerling.id);
 
-//    $.post("registreerAanwezigheid.php", {leerlingID: leerling.id}, function (data, status) {
+    $.post("registreerAfwezigheid.php", {leerlingID: leerling.id}, function (data, status) {
 //			$.post("./registreerAanwezigheid.php",  function(data){                                          
 //				alert("Data: " + data + "\nStatus: " + status);
 //				$('#somediv').html(data);
@@ -98,9 +98,6 @@ function afwezig(leerling) {
                 Dit is test
             </div>
 
-            <div class="button">
-                <button type="submit" onclick="myPopup()" value="Leerling opvoeren" >Opvoeren Leerling</button> 
-            </div>
 
         </div>
         <footer>

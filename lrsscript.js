@@ -102,7 +102,7 @@ function myPopup() {
 }
 //submit form in popup
 function mySubmit() {
-    alert("ben bij addEvent");
+//    alert("ben bij addEvent");
     document.getElementById("myForm").submit();
 }
 

@@ -10,7 +10,7 @@ require_once './connection.php';
     <body>
 
 
-        <link rel="stylesheet" type="text/css" href="opmaaklrs.css">
+<!--------        <link rel="stylesheet" type="text/css" href="opmaaklrs.css">    ----->
         <meta charset="utf-8" />
         <title> Leerlingen Registratie Systeem </title>
 
@@ -29,7 +29,6 @@ require_once './connection.php';
             $conn = connectToDb();
             $result = $conn->query($sql);
 
-
             $vorigID = 9999999;
             while ($row = mysqli_fetch_array($result)) {
                 if ($vorigID != $row['leerlingID']) {
@@ -37,10 +36,10 @@ require_once './connection.php';
                     echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=100px  ></div> \n";
                     echo "<div class='leerling'>" . $row['naam'] . " </div>\n";
                     $vorigID = $row['leerlingID'];
-                    echo "<div class='leerling> </div>\n";
+//                    echo "<div class='leerling> </div>\n";
                 }
-                echo "<div class='leerling'>" . $row['datum'] . " tijd " . $row['tijd'] ." ". $row['signalering'] . " </div>\n";
-                echo "<div class='leerling> </div>\n";
+                echo "<p>" . $row['datum'] . " tijd " . $row['tijd'] ." ". $row['signalering'] . " </p>\n";
+//                echo "<div </div>\n";
             }
             echo "</div >";
             ?>      
