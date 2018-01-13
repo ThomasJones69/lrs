@@ -12,7 +12,7 @@ function afwezig(leerling) {
 //Function  werkt niet vanuit de js file
     console.log(leerling.id);
 
-    $.post("registreerAanwezigheid.php", {leerlingID: leerling.id}, function (data, status) {
+//    $.post("registreerAanwezigheid.php", {leerlingID: leerling.id}, function (data, status) {
 //			$.post("./registreerAanwezigheid.php",  function(data){                                          
 //				alert("Data: " + data + "\nStatus: " + status);
 //				$('#somediv').html(data);
@@ -39,15 +39,43 @@ function afwezig(leerling) {
 
 
     <?php
+	
+	
+	function leerlingIsVandaagNogNietAanwezigGeregistreerd($paramLeerlingID) {
+		$eruit = false;
+		$huidigeDatum = date("Y-m-d");
+		$huidigeTijd  = date("Hi");
+		$conn = connectToDb();
+		$sql = "SELECT * FROM aanwezigheid where `leerling_id` = ".$paramLeerlingID .
+		" and datum = '$huidigeDatum'" ;
+//		echo $sql;
+		$result = $conn->query($sql);
+		if ($result) {
+			$row = mysqli_fetch_array($result) ;
+			if (isset($row['leerling_id'])) {
+//				echo " 56 ";
+				$eruit = false ;
+			} else	{
+				//echo " 59 ";
+				$eruit = true;
+			}
+		}  else {
+//			echo " 63 ";
+			
+			$eruit = true;
+		}
+		$conn->close();
+		return($eruit);
+	}
 			
 	$huidigeDatum = date("Y-m-d");
 	$huidigeTijd  = date("Hi");
 
 			
-$sql = "SELECT * , `leerling`.`id` as `leerlingID`  FROM `aanwezigheid` JOIN  `leerling`  on  `leerling`.`id` =  `aanwezigheid`.`leerling_id` where `aanwezigheid`.`datum` != '$huidigeDatum'";			
-echo $sql;
+//$sql = "SELECT * , `leerling`.`id` as `leerlingID`  FROM `aanwezigheid` JOIN  `leerling`  on  `leerling`.`id` =  `aanwezigheid`.`leerling_id` where `aanwezigheid`.`datum` != '$huidigeDatum'";			
 //            $sql = "SELECT * , `leerling`.`id` as `leerlingID`  FROM `aanwezigheid` JOIN  `leerling`  on  `leerling`.`id` =  `aanwezigheid`.`leerling_id` where "; 
-//            $sql = "SELECT * FROM `leerling`";
+            $sql = "SELECT * FROM `leerling`  order by `schermvolgnr";
+//	echo $sql;
             $conn = connectToDb();
             $result = $conn->query($sql);
 
@@ -56,10 +84,13 @@ echo $sql;
 
 
             while ($row = mysqli_fetch_array($result)) {
-                echo " <div class='leerling' id='afbContainer'> ";
-                echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='afwezig(this)'>";
+				if (leerlingIsVandaagNogNietAanwezigGeregistreerd($row['id']) ) {
+					echo " <div class='leerling' id='afbContainer'> ";
+					echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='afwezig(this)'>";
+				}
             }
             echo "</div >";
+			
             ?>
 
 
