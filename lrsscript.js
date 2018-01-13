@@ -119,23 +119,21 @@ function aanwezig(leerling) {
 // popup absentie
 function myPopup_absentie(img) {
     var afbinhoud = img;
-    alert(afbinhoud.id + afbinhoud.src);
 
     var popup = document.createElement("div");
     popup.setAttribute("id", "test")
 
     var form = document.createElement("form");
-    form.setAttribute("action", "invoerenLeerling.php");
-    form.setAttribute("id", "myForm");
+    form.setAttribute("action", "BasTest.php");
+    form.setAttribute("id", "myFormAbsent");
     form.setAttribute("method", "get");
     form.setAttribute("enctype", "multipart/form-data");
 
     var id = document.createElement("input");
     id.setAttribute("type", "hidden");
     id.setAttribute("name", "leerlingID");
-    var idText = document.createTextNode(afbinhoud.id);
-    id.appendChild(idText);
-
+    id.setAttribute("value", afbinhoud.id);
+    
     var textbox = document.createElement("p");
     var innerbox = document.createTextNode("Selecteer reden");
     textbox.appendChild(innerbox);
@@ -145,7 +143,7 @@ function myPopup_absentie(img) {
     submit.setAttribute("type", "button");
     submit.setAttribute("value", "submit");
     submit.setAttribute("id", "submitKnop");
-    submit.addEventListener("click", mySubmit);
+    submit.addEventListener("click", mySubmitAbsent);
 
     var afb = document.createElement("img");
     afb.setAttribute("class", "classafb");
@@ -193,6 +191,11 @@ function myPopup_absentie(img) {
 //submit form in popup
 function mySubmit() {
     document.getElementById("myForm").submit();
+    document.getElementById("test").parentNode.removeChild(document.getElementById("test"));
+}
+function mySubmitAbsent() {
+    document.getElementById("myFormAbsent").submit();
+    document.getElementById("test").parentNode.removeChild(document.getElementById("test"));
 }
 
 
