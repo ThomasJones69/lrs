@@ -16,6 +16,9 @@ function aanwezig(leerling) {
 //			$.post("./registreerAanwezigheid.php",  function(data){                                          
 //				alert("Data: " + data + "\nStatus: " + status);
 //				$('#somediv').html(data);
+		console.log(leerling);
+		$(leerling).hide();
+
     });
 }
 
