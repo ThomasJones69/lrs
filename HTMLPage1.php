@@ -17,7 +17,8 @@ function aanwezig(leerling) {
 //				alert("Data: " + data + "\nStatus: " + status);
 //				$('#somediv').html(data);
 		console.log(leerling);
-		$(leerling).hide();
+		//$(leerling).hide();
+		$(leerling).fadeTo("slow", 0.40);
 
     });
 }
