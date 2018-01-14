@@ -12,7 +12,7 @@ require_once './connection.php';
 	require_once './connection.php';
 	require_once './model.php';
 */	
-
+	$eruit = FALSE;
 	$huidigeDatum = date("Y-m-d");
 	$huidigeTijd  = date("Hi");
 	$conn = connectToDb();
@@ -38,9 +38,11 @@ require_once './connection.php';
 			$sql = $sql . "'" . $huidigeDatum             . "' ," ;
 			$sql = $sql . "'" . $huidigeTijd              . "' ," ;
 			$sql = $sql . "'" . $absentieCode             . "' ," ;
-			$sql = $sql . "'1'" ;
+			$sql = $sql . "'1')" ;
 			echo $sql;
-		$eruit = true;
+			$result = $conn->query($sql);
+			
+		$eruit = $result;
 		}
 	}  else {
 		echo " bestaat al" ;
