@@ -38,9 +38,9 @@ require_once './connection.php';
 					if ($alleenAbsenteLeerlingen) {
 						// dit is de tak voor de absente leerlingen registratie
 						if (leerlingIsVandaagNogNietAanwezigGeregistreerd($row['id'])) {
-							echo " <div class='leerling' id='afbContainer'> ";
+							echo " <div class='leerling' id=" . $row['id'] . "> ";
 							echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='afwezig(this)'> ";
-							echo createTagSelect("selectorAbsentie");
+							echo createTagSelect('selIndex'. $row['id']);
 							echo "</div>";
 						} 
 					} else {
@@ -63,10 +63,10 @@ require_once './connection.php';
 			$ParamConn = connectToDb();
             $sql           = "SELECT * FROM `absentie` ";
             $erinResultSet = $ParamConn->query($sql);
-            $eruit = "<select id=$selectidname onClick=verwerkAbsentie(); >";  
+            $eruit = "<select id=$selectidname onClick=afwezig(this); >";  
             for ($x = 0; $x < $erinResultSet->num_rows; $x++) {
                 $row = $erinResultSet->fetch_assoc();  
-				$eruit .= "<option>";   
+				$eruit .= "<option >";   
                 $eruit .= "["; 
                 $eruit .= $row['id']; 
                 $eruit .= "]  "; 
