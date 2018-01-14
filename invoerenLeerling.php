@@ -54,7 +54,10 @@ if ( $result->num_rows  == 0 ) {
 	$result            = $conn->query($sql);
 	}
 
+    header("Location: HTMLPage1.php");
 
+
+	
 function berekenSchermVolgnr($par_klas){
 	$conn = connectToDb();
 	$sql = "SELECT MAX(schermvolgnr) AS maxSchermVolgnr FROM leerling where `klas` = ".$par_klas;

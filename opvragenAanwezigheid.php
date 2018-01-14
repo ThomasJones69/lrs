@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once './connection.php';
+require_once './functiesPHP.php';
 //echo showHeader();
 ?>
 <html>

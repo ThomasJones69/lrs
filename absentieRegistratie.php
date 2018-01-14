@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once './connection.php';
+require_once './functiesPHP.php';
+
 ?>
 
 <html>
@@ -14,7 +16,8 @@ function afwezig(leerling) {
 
     $.post("registreerAfwezigheid.php", {leerlingID: leerling.id}, function (data, status) {
 //			$.post("./registreerAanwezigheid.php",  function(data){                                          
-//				alert("Data: " + data + "\nStatus: " + status);
+    console.log(leerling.id);
+				alert("Data: " + data + "\nStatus: " + status);
 //				$('#somediv').html(data);
     });
 }
@@ -30,7 +33,7 @@ function afwezig(leerling) {
     </head>
     <body>
         <div class="banner">
-            <header>Leerling Absentie Registratie</header>
+            <header> Absente leerlingen  </header>
         </div>
         <nav>
 
@@ -41,44 +44,20 @@ function afwezig(leerling) {
     <?php
 	
 	
-	function leerlingIsVandaagNogNietAanwezigGeregistreerd($paramLeerlingID) {
-		$eruit = false;
-		$huidigeDatum = date("Y-m-d");
-		$huidigeTijd  = date("Hi");
-		$conn = connectToDb();
-		$sql = "SELECT * FROM aanwezigheid where `leerling_id` = ".$paramLeerlingID .
-		" and datum = '$huidigeDatum'" ;
-//		echo $sql;
-		$result = $conn->query($sql);
-		if ($result) {
-			$row = mysqli_fetch_array($result) ;
-			if (isset($row['leerling_id'])) {
-//				echo " 56 ";
-				$eruit = false ;
-			} else	{
-				//echo " 59 ";
-				$eruit = true;
-			}
-		}  else {
-//			echo " 63 ";
 			
-			$eruit = true;
-		}
-		$conn->close();
-		return($eruit);
-	}
-			
-	$huidigeDatum = date("Y-m-d");
-	$huidigeTijd  = date("Hi");
 
 			
 //$sql = "SELECT * , `leerling`.`id` as `leerlingID`  FROM `aanwezigheid` JOIN  `leerling`  on  `leerling`.`id` =  `aanwezigheid`.`leerling_id` where `aanwezigheid`.`datum` != '$huidigeDatum'";			
 //            $sql = "SELECT * , `leerling`.`id` as `leerlingID`  FROM `aanwezigheid` JOIN  `leerling`  on  `leerling`.`id` =  `aanwezigheid`.`leerling_id` where "; 
-            $sql = "SELECT * FROM `leerling`  order by `schermvolgnr";
-//	echo $sql;
+/*            $sql = "SELECT * FROM `leerling`  order by `schermvolgnr";
             $conn = connectToDb();
             $result = $conn->query($sql);
+*/
 
+
+			zetLeerlingenOpHetScherm(TRUE);
+			
+/*
 
             echo "<div class='klas' > ";
 
@@ -90,7 +69,7 @@ function afwezig(leerling) {
 				}
             }
             echo "</div >";
-			
+*/			
             ?>
 
 
