@@ -1,16 +1,14 @@
 
 // creeer popup element
 function myPopup() {
-//                alert('werkt' + " " + img.id + " " +    img.src );
     var popup = document.createElement("div");
-    popup.setAttribute("id", "test")
+    popup.setAttribute("id", "test");
 
     var form = document.createElement("form");
     form.setAttribute("action", "invoerenLeerling.php");
     form.setAttribute("id", "myForm");
     form.setAttribute("method", "post");
     form.setAttribute("enctype", "multipart/form-data")
-
 
     var naam = document.createElement("input");
     naam.setAttribute("name", "naam");
@@ -19,7 +17,6 @@ function myPopup() {
     var adres = document.createElement("input");
     adres.setAttribute("name", "adres");
     adres.setAttribute("placeholder", "Adres");
-
 
     var woonplaats = document.createElement("input");
     woonplaats.setAttribute("name", "woonplaats");
@@ -51,11 +48,6 @@ function myPopup() {
     submit.setAttribute("id", "submitKnop");
     submit.addEventListener("click", mySubmit);
 
-//                var afb = document.createElement("img");
-//                afb.setAttribute("class", "classafb");
-//                afb.setAttribute("src", img.src );
-
-
 //  Uploaden foto
     var loadAfb = document.createElement("input");
     loadAfb.setAttribute("type", "hidden");
@@ -69,7 +61,6 @@ function myPopup() {
     var userFile = document.createElement("input");
     userFile.setAttribute("name", "userfile");
     userFile.setAttribute("type", "file");
-
 
     //sluitknop
     var sluitknop = document.createElement("button");
@@ -90,26 +81,21 @@ function myPopup() {
     form.appendChild(telOuders);
     form.appendChild(klasnr);
 
-
     popup.appendChild(sluitknop);
     popup.appendChild(form);
     popup.appendChild(submit);
     popup.setAttribute("class", "popupnaam");
     var popupvak = document.getElementById("afbContainer");
     popupvak.appendChild(popup);
-
-
 }
 //submit form in popup
 function mySubmit() {
 //    alert("ben bij addEvent");
     document.getElementById("myForm").submit();
 }
-
 //Function voor het registeren van de leerling
 function aanwezig(leerling) {
     console.log(leerling.id);
-
     $.post("registreerAanwezigheid.php", {leerlingID: leerling.id}, function (data, status) {
 //			$.post("./registreerAanwezigheid.php",  function(data){                                          
 //				alert("Data: " + data + "\nStatus: " + status);
@@ -133,7 +119,7 @@ function myPopup_absentie(img) {
     id.setAttribute("type", "hidden");
     id.setAttribute("name", "leerlingID");
     id.setAttribute("value", afbinhoud.id);
-    
+
     var textbox = document.createElement("p");
     var innerbox = document.createTextNode("Selecteer reden");
     textbox.appendChild(innerbox);
@@ -158,19 +144,9 @@ function myPopup_absentie(img) {
 
     //droplist
     var select = document.createElement("select");
-    var option1 = document.createElement("option");
-    option1.setAttribute("value", "ziek");
-    var txt1 = document.createTextNode("ziek");
-    option1.appendChild(txt1);
-    select.appendChild(option1);
-
-    var option2 = document.createElement("option");
-    option2.setAttribute("value", "verslapen");
-    var txt2 = document.createTextNode("verslapen");
-    option2.appendChild(txt2);
-    select.appendChild(option2);
-
-
+    select.setAttribute("name", "absentieID");
+    loadDoc(select);
+    
     //toevoegen child aan parent 
     form.appendChild(afb);
     form.appendChild(id);
@@ -179,14 +155,11 @@ function myPopup_absentie(img) {
 
     popup.appendChild(sluitknop);
     popup.appendChild(form);
-    id
 
     popup.appendChild(submit);
     popup.setAttribute("class", "popupnaam");
     var popupvak = document.getElementById("afbContainer");
     popupvak.appendChild(popup);
-
-
 }
 //submit form in popup
 function mySubmit() {
@@ -197,20 +170,32 @@ function mySubmitAbsent() {
     document.getElementById("myFormAbsent").submit();
     document.getElementById("test").parentNode.removeChild(document.getElementById("test"));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// ajax for dropdown menu reden afwezigheid
+function loadDoc(select) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            basFunction(this,select);
+        }
+    };
+    xhttp.open("GET", "code_absentie.xml", true);
+    xhttp.send();
+}
+// creeren option tags dropdown menu
+function basFunction(xml,select) {
+    var i;
+    var xmlDoc = xml.responseXML;
+    var x = xmlDoc.getElementsByTagName("code");
+    for (i = 0; i < x.length; i++) {
+        var codeValue = x[i].getElementsByTagName("option")[0].childNodes[0].nodeValue;
+        var option = document.createElement("option");
+        option.setAttribute("class", "option");
+        option.setAttribute("id", "optionID" + i);
+        option.setAttribute("value", codeValue);
+        select.appendChild(option);
+        document.getElementById('optionID' + i).innerHTML = codeValue;
+    }
+}
 // popup deleten
 function cancelPopup() {
     document.getElementById("test").parentNode.removeChild(document.getElementById("test"));
