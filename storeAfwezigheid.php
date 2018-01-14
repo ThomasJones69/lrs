@@ -17,35 +17,42 @@ require_once './connection.php';
 	$huidigeTijd  = date("Hi");
 	$conn = connectToDb();
 	$sql = "SELECT * FROM aanwezigheid where `leerling_id` = ".$_REQUEST['leerlingID'] .
-		" and datum = '$huidigeDatum'" ;
+		" and `datum` = '$huidigeDatum'" ;
 	echo $_REQUEST['absentieCode'];
 	$temp  = $_REQUEST['absentieCode'];
 	$absentieCode = substr($temp,1,1);
-	
-	echo $sql;
-	$result = $conn->query($sql);
-	if ($result) {
-		$row = mysqli_fetch_array($result) ;
-//		var_dump($row);
-		if (isset($row['leerling_id'])) {
-			echo " 27 ";
+	if ($absentieCode != 0)  {
+		echo $sql;
+		$result = $conn->query($sql);
+		if ($result) {
+			$row = mysqli_fetch_array($result) ;
+	//		var_dump($row);
+			if (isset($row['leerling_id'])) {
+				echo " 27 ";
+				$sql = "UPDATE `aanwezigheid`   SET `absentiecode` = '$absentieCode'";
+				$sql = $sql . "where `leerling_id` = ".$_REQUEST['leerlingID'] ;
+				$sql = $sql . " and `datum` = '$huidigeDatum'" ;
+				echo $sql;
+				$result = $conn->query($sql);
 
-		} else	{
-			echo " 30 ";
-			$sql = "INSERT INTO `aanwezigheid`(`leerling_id`, `datum`, `tijd`, `absentiecode`, `klas`)";
-			$sql = $sql . "VALUES (";
-			$sql = $sql . "'" . $_REQUEST['leerlingID']   . "' ," ;
-			$sql = $sql . "'" . $huidigeDatum             . "' ," ;
-			$sql = $sql . "'" . $huidigeTijd              . "' ," ;
-			$sql = $sql . "'" . $absentieCode             . "' ," ;
-			$sql = $sql . "'1')" ;
-			echo $sql;
-			$result = $conn->query($sql);
-			
-		$eruit = $result;
+
+			} else	{
+				echo " 30 ";
+				$sql = "INSERT INTO `aanwezigheid`(`leerling_id`, `datum`, `tijd`, `absentiecode`, `klas`)";
+				$sql = $sql . "VALUES (";
+				$sql = $sql . "'" . $_REQUEST['leerlingID']   . "' ," ;
+				$sql = $sql . "'" . $huidigeDatum             . "' ," ;
+				$sql = $sql . "'" . $huidigeTijd              . "' ," ;
+				$sql = $sql . "'" . $absentieCode             . "' ," ;
+				$sql = $sql . "'1')" ;
+				echo $sql;
+				$result = $conn->query($sql);
+				
+			$eruit = $result;
+			}
+		}  else {
+			echo " bestaat al" ;
 		}
-	}  else {
-		echo " bestaat al" ;
 	}
 	$conn->close();
 	return($eruit);
