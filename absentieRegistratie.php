@@ -10,15 +10,25 @@ require_once './functiesPHP.php';
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="lrsscript.js"></script>
 <script>
-function afwezig(leerling) {
-//Function  werkt niet vanuit de js file
-    console.log(leerling.id);
+function afwezig(selectElement) {
+	//Function  werkt niet vanuit de js file
+	var parentDiv = selectElement.parentNode;
+	var leerlingID = parentDiv.id;	
+	var selectedIndexVanSelector = document.getElementById(selectElement.id).selectedIndex;
+	var absentieCodeUitSelect    = document.getElementById(selectElement.id).options[selectedIndexVanSelector].text;
+//	console.log(leerlingID);
+//	console.log(absentieCodeUitSelect);
+	$(selectElement).fadeTo("slow", 0.40);
 
-    $.post("registreerAfwezigheid.php", {leerlingID: leerling.id}, function (data, status) {
+
+    $.post("storeAfwezigheid.php", {leerlingID: leerlingID , absentieCode: absentieCodeUitSelect}, function (data, status) {
 //			$.post("./registreerAanwezigheid.php",  function(data){                                          
-    console.log(leerling.id);
-				alert("Data: " + data + "\nStatus: " + status);
-//				$('#somediv').html(data);
+//    console.log(searchString);
+//			$(this).html(data);
+	console.log(data);
+	console.log(status);
+	
+
     });
 }
 
@@ -41,36 +51,7 @@ function afwezig(leerling) {
         <div class="klas">
 
 
-    <?php
-	
-	
-			
-
-			
-//$sql = "SELECT * , `leerling`.`id` as `leerlingID`  FROM `aanwezigheid` JOIN  `leerling`  on  `leerling`.`id` =  `aanwezigheid`.`leerling_id` where `aanwezigheid`.`datum` != '$huidigeDatum'";			
-//            $sql = "SELECT * , `leerling`.`id` as `leerlingID`  FROM `aanwezigheid` JOIN  `leerling`  on  `leerling`.`id` =  `aanwezigheid`.`leerling_id` where "; 
-/*            $sql = "SELECT * FROM `leerling`  order by `schermvolgnr";
-            $conn = connectToDb();
-            $result = $conn->query($sql);
-*/
-
-
-			zetLeerlingenOpHetScherm(TRUE);
-			
-/*
-
-            echo "<div class='klas' > ";
-
-
-            while ($row = mysqli_fetch_array($result)) {
-				if (leerlingIsVandaagNogNietAanwezigGeregistreerd($row['id']) ) {
-					echo " <div class='leerling' id='afbContainer'> ";
-					echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='afwezig(this)'>";
-				}
-            }
-            echo "</div >";
-*/			
-            ?>
+    <?php zetLeerlingenOpHetScherm(TRUE);    ?>
 
 
             <div class="zoek">
