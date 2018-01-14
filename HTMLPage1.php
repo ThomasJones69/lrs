@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once './connection.php';
+require_once './functiesPHP.php';
 ?>
 
 <html>
@@ -16,6 +17,10 @@ function aanwezig(leerling) {
 //			$.post("./registreerAanwezigheid.php",  function(data){                                          
 //				alert("Data: " + data + "\nStatus: " + status);
 //				$('#somediv').html(data);
+		console.log(leerling);
+		//$(leerling).hide();
+		$(leerling).fadeTo("slow", 0.40);
+
     });
 }
 
@@ -56,23 +61,29 @@ function aanwezig(leerling) {
         <nav>
 
         </nav>
-        <div class="klas">
-
 
             <?php
-            $sql = "SELECT * FROM `leerling`";
+/*    functei is naa functiesPHP         $sql = "SELECT * FROM `leerling`";
             $conn = connectToDb();
             $result = $conn->query($sql);
-
-
+*/			
+			zetLeerlingenOpHetScherm(FALSE);
+			
+/*  functei is naa functiesPHP
             echo "<div class='klas' > ";
 
 
             while ($row = mysqli_fetch_array($result)) {
-                echo " <div class='leerling' id='afbContainer'> ";
-                echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='aanwezig(this)'>";
+				if (leerlingIsVandaagNogNietAanwezigGeregistreerd($row['id'])) {
+					echo " <div class='leerling' id='afbContainer'> ";
+				} else {
+					echo " <div  style='opacity:0.4' class='leerling' id='afbContainer'> ";
+				}
+                echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='aanwezig(this)'> ";
+				echo "</div>";
             }
             echo "</div >";
+*/			
             ?>
 
 

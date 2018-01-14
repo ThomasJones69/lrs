@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 11 jan 2018 om 13:33
--- Serverversie: 10.1.29-MariaDB
--- PHP-versie: 7.2.0
+-- Generation Time: Jan 13, 2018 at 12:31 PM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `aanwezigheid`
+-- Table structure for table `aanwezigheid`
 --
 
 CREATE TABLE `aanwezigheid` (
@@ -37,35 +37,26 @@ CREATE TABLE `aanwezigheid` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `aanwezigheid`
+-- Dumping data for table `aanwezigheid`
 --
 
 INSERT INTO `aanwezigheid` (`leerling_id`, `datum`, `tijd`, `absentiecode`, `klas`) VALUES
-(1, '2018-01-10', 1447, 0, 1),
-(1, '2018-01-10', 1448, 0, 1),
-(1, '2018-01-10', 1450, 0, 1),
-(1, '2018-01-10', 1451, 0, 1),
-(1, '2018-01-10', 1600, 0, 1),
-(1, '2018-01-11', 1100, 0, 1),
-(1, '2018-01-11', 1332, 0, 1),
-(2, '2018-01-10', 1450, 0, 1),
-(2, '2018-01-10', 1451, 0, 1),
-(2, '2018-01-11', 1101, 0, 1),
-(2, '2018-01-11', 1322, 0, 1),
-(2, '2018-01-11', 1332, 0, 1),
-(3, '2018-01-10', 1450, 0, 1),
-(3, '2018-01-10', 1451, 0, 1),
-(3, '2018-01-10', 1516, 0, 1),
-(3, '2018-01-10', 1559, 0, 1),
-(3, '2018-01-11', 1322, 0, 1),
-(3, '2018-01-11', 1332, 0, 1),
-(4, '2018-01-11', 1328, 0, 1),
-(4, '2018-01-11', 1332, 0, 1);
+(1, '2018-01-13', 1158, 0, 1),
+(1, '2018-01-13', 1228, 0, 1),
+(2, '2018-01-13', 1158, 0, 1),
+(4, '2018-01-13', 1149, 0, 1),
+(4, '2018-01-13', 1228, 0, 1),
+(5, '2018-01-13', 1149, 0, 1),
+(6, '2018-01-13', 1149, 0, 1),
+(6, '2018-01-13', 1158, 0, 1),
+(7, '2018-01-13', 1149, 0, 1),
+(8, '2018-01-13', 1149, 0, 1),
+(9, '2018-01-13', 1149, 0, 1);
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `absentie`
+-- Table structure for table `absentie`
 --
 
 CREATE TABLE `absentie` (
@@ -76,16 +67,18 @@ CREATE TABLE `absentie` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `absentie`
+-- Dumping data for table `absentie`
 --
 
 INSERT INTO `absentie` (`id`, `signalering`, `aantal`, `urgentie`) VALUES
-(1, 'Ziek', 3, 1);
+(0, 'Aanwezig', 0, 0),
+(1, 'Ziek', 3, 1),
+(4, 'Onbekend', 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `klas`
+-- Table structure for table `klas`
 --
 
 CREATE TABLE `klas` (
@@ -95,7 +88,7 @@ CREATE TABLE `klas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `klas`
+-- Dumping data for table `klas`
 --
 
 INSERT INTO `klas` (`id`, `naam`, `omschrijving`) VALUES
@@ -104,7 +97,7 @@ INSERT INTO `klas` (`id`, `naam`, `omschrijving`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `leerling`
+-- Table structure for table `leerling`
 --
 
 CREATE TABLE `leerling` (
@@ -121,70 +114,76 @@ CREATE TABLE `leerling` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `leerling`
+-- Dumping data for table `leerling`
 --
 
 INSERT INTO `leerling` (`id`, `naam`, `adres`, `woonplaats`, `tel`, `telnood`, `telouders`, `foto`, `schermvolgnr`, `klas`) VALUES
 (1, 'Bas Gehin', 'Kerkstraat 26', 'Zwolle', '06123456789', '06123456789', '06123456789', './fotoos/bas.jpg', 1, 1),
 (2, 'Thomas Jones', 'Dorpstraat 12', 'Hardenberg', '06123456789', '06123456789', '06123456789', './fotoos/thomas.jpg', 2, 1),
 (3, 'Khaldoon', 'kerlaan 22', 'amsterdam', '06123456789', '06123456789', '06123456789', 'fotoos/khaldoon.jpg', 3, 1),
-(4, 'gggggg', '', '', '', '', '', 'fotoos/erik.jpg', 0, 0);
+(5, 'eenhorn', 'ee', 'ee', '98', '76', '54', 'fotoos/default.jpg', 4, 1),
+(6, 'g', 'g', 'g', '8', 'g', '', 'fotoos/default.jpg', 1, 0),
+(7, 'a', 'a', 'a', '', '', '', 'fotoos/default.jpg', 1, 0),
+(8, 'h', 'h', 'h', '56789', '56789', '6789', 'fotoos/default.jpg', 5, 1),
+(9, 'eenhoorn', 'kerklaan', 'ede', '666', '666', '66666', 'fotoos/eenhorn.png', 6, 1),
+(10, 'gerard', 'gg', '', '', '', '', 'fotoos/eenhorn.png', 7, 1),
+(18, 'zx', '', '', '', '', '', 'fotoos/eenhorn.png', 8, 1);
 
 --
--- Indexen voor geëxporteerde tabellen
+-- Indexes for dumped tables
 --
 
 --
--- Indexen voor tabel `aanwezigheid`
+-- Indexes for table `aanwezigheid`
 --
 ALTER TABLE `aanwezigheid`
   ADD PRIMARY KEY (`leerling_id`,`datum`,`tijd`);
 
 --
--- Indexen voor tabel `absentie`
+-- Indexes for table `absentie`
 --
 ALTER TABLE `absentie`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexen voor tabel `klas`
+-- Indexes for table `klas`
 --
 ALTER TABLE `klas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexen voor tabel `leerling`
+-- Indexes for table `leerling`
 --
 ALTER TABLE `leerling`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT voor geëxporteerde tabellen
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT voor een tabel `aanwezigheid`
+-- AUTO_INCREMENT for table `aanwezigheid`
 --
 ALTER TABLE `aanwezigheid`
-  MODIFY `leerling_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `leerling_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT voor een tabel `absentie`
+-- AUTO_INCREMENT for table `absentie`
 --
 ALTER TABLE `absentie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT voor een tabel `klas`
+-- AUTO_INCREMENT for table `klas`
 --
 ALTER TABLE `klas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT voor een tabel `leerling`
+-- AUTO_INCREMENT for table `leerling`
 --
 ALTER TABLE `leerling`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

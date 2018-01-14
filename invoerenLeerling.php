@@ -18,13 +18,13 @@ $schermvolgnr	=	berekenSchermVolgnr($klas);
 
 $uploaddir = 'fotoos/';
 $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
-echo "uploadfile";
-echo $uploadfile;
+//echo "uploadfile";
+//echo $uploadfile;
 //echo '<pre>';
 if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
-    echo "File is valid, and was successfully uploaded.\n";
+//    echo "File is valid, and was successfully uploaded.\n";
 } else {
-    echo "Possible file upload attack!\n";
+//    echo "Possible file upload attack!\n";
 }
 
 //echo 'Here is some more debugging info:';
@@ -35,7 +35,7 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
 
 $foto = $uploadfile;
 
-echo $foto;
+//echo $foto;
 
 
 
@@ -49,21 +49,28 @@ if ( $result->num_rows  == 0 ) {
 
 	$sql = "INSERT INTO `leerling`(`naam`, `adres`, `woonplaats`, `tel`, `telnood`, `telouders`, `foto`, `schermvolgnr`, `klas`) "
 		   . "VALUES ( '$naam', '$adres' , '$woonplaats' , '$tel' , '$telnood' , '$telouders' , '$foto','$schermvolgnr','$klas') "; 		
-	echo($sql);
+//	echo($sql);
 	$conn              = connectToDb();
 	$result            = $conn->query($sql);
 	}
 
+    header("Location: HTMLPage1.php");
 
+
+	
 function berekenSchermVolgnr($par_klas){
 	$conn = connectToDb();
 	$sql = "SELECT MAX(schermvolgnr) AS maxSchermVolgnr FROM leerling where `klas` = ".$par_klas;
 	$result = $conn->query($sql);
-	$row = mysqli_fetch_array($result) ;
-	if (isset($row['maxSchermVolgnr'])) {
-		$eruit = $row['maxSchermVolgnr'];
-		$eruit = $eruit + 1;
-	} else	{
+	if ($result) {
+		$row = mysqli_fetch_array($result) ;
+		if (isset($row['maxSchermVolgnr'])) {
+			$eruit = $row['maxSchermVolgnr'];
+			$eruit = $eruit + 1;
+		} else	{
+			$eruit = 1;
+		}
+	}	else	{
 		$eruit = 1;
 	}
 	$conn->close();
