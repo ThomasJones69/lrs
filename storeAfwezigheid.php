@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once './connection.php';
+require_once './functiesPHP.php';
 //echo showHeader();
 
 /*	$item      = $_SESSION['item'];
@@ -16,11 +17,11 @@ require_once './connection.php';
 	$huidigeDatum = date("Y-m-d");
 	$huidigeTijd  = date("Hi");
 	$conn = connectToDb();
+	$absentieCode =  getAbsentieCode($_REQUEST['absentieID']);
+	
+	
 	$sql = "SELECT * FROM aanwezigheid where `leerling_id` = ".$_REQUEST['leerlingID'] .
 		" and `datum` = '$huidigeDatum'" ;
-	echo $_REQUEST['absentieCode'];
-	$temp  = $_REQUEST['absentieCode'];
-	$absentieCode = substr($temp,1,1);
 	if ($absentieCode != 0)  {
 		echo $sql;
 		$result = $conn->query($sql);
@@ -55,7 +56,8 @@ require_once './connection.php';
 		}
 	}
 	$conn->close();
-	return($eruit);
+	header("Location: absentieRegistratie.php");
+//	return($eruit);
 		
 
 
