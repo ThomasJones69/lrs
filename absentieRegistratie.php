@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once './connection.php';
+require_once './functiesPHP.php';
+
 ?>
 
 <html>
@@ -8,14 +10,25 @@ require_once './connection.php';
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="lrsscript.js"></script>
 <script>
-function afwezig(leerling) {
-//Function  werkt niet vanuit de js file
-    console.log(leerling.id);
+function afwezig(selectElement) {
+	//Function  werkt niet vanuit de js file
+	var parentDiv = selectElement.parentNode;
+	var leerlingID = parentDiv.id;	
+	var selectedIndexVanSelector = document.getElementById(selectElement.id).selectedIndex;
+	var absentieCodeUitSelect    = document.getElementById(selectElement.id).options[selectedIndexVanSelector].text;
+//	console.log(leerlingID);
+//	console.log(absentieCodeUitSelect);
+	$(selectElement).fadeTo("slow", 0.40);
 
-    $.post("registreerAanwezigheid.php", {leerlingID: leerling.id}, function (data, status) {
+
+    $.post("storeAfwezigheid.php", {leerlingID: leerlingID , absentieCode: absentieCodeUitSelect}, function (data, status) {
 //			$.post("./registreerAanwezigheid.php",  function(data){                                          
-//				alert("Data: " + data + "\nStatus: " + status);
-//				$('#somediv').html(data);
+//    console.log(searchString);
+//			$(this).html(data);
+	console.log(data);
+	console.log(status);
+	
+
     });
 }
 
@@ -30,46 +43,19 @@ function afwezig(leerling) {
     </head>
     <body>
         <div class="banner">
-            <header>Leerling Absentie Registratie</header>
+            <header> Absente leerlingen  </header>
         </div>
         <nav>
 
         </nav>
-        <div class="klas">
 
-
-    <?php
-			
-	$huidigeDatum = date("Y-m-d");
-	$huidigeTijd  = date("Hi");
-
-			
-$sql = "SELECT * , `leerling`.`id` as `leerlingID`  FROM `aanwezigheid` JOIN  `leerling`  on  `leerling`.`id` =  `aanwezigheid`.`leerling_id` where `aanwezigheid`.`datum` != '$huidigeDatum'";			
-echo $sql;
-//            $sql = "SELECT * , `leerling`.`id` as `leerlingID`  FROM `aanwezigheid` JOIN  `leerling`  on  `leerling`.`id` =  `aanwezigheid`.`leerling_id` where "; 
-//            $sql = "SELECT * FROM `leerling`";
-            $conn = connectToDb();
-            $result = $conn->query($sql);
-
-
-            echo "<div class='klas' > ";
-
-
-            while ($row = mysqli_fetch_array($result)) {
-                echo " <div class='leerling' id='afbContainer'> ";
-                echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='afwezig(this)'>";
-            }
-            echo "</div >";
-            ?>
+    <?php zetLeerlingenOpHetScherm(TRUE);    ?>
 
 
             <div class="zoek">
                 Dit is test
             </div>
 
-            <div class="button">
-                <button type="submit" onclick="myPopup()" value="Leerling opvoeren" >Opvoeren Leerling</button> 
-            </div>
 
         </div>
         <footer>

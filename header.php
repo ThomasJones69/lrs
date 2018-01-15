@@ -19,11 +19,11 @@
             <!--		<div class="nav-login">-->
                 
                 <ul>
-                    <li><a href="invoerenLeerling.php">Beheer Leerlingen</a></li>
+                    <li><a href="invoerenLeerling.php">Opvragen aanwezigheid</a></li>
 		</ul>
         <!--		<div class="nav-login">-->
                 <ul>
-                    <li><a href="registreerAanwezigheid.php">Aanwezigheid</a></li>
+                    <li><a href="registreerAanwezigheid.php">Absentie registratie</a></li>
 		</ul>
 
 	</div>
