@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once './connection.php';
+include_once 'header.php';
 ?>
 
 <html>
@@ -28,34 +29,14 @@ function aanwezig(leerling) {
         <meta charset="utf-8" />
         <title> Leerlingen Registratie Systeem </title>
     </head>
+    
     <body>
-<!--        <div class="banner">
-            <header>Leerling Registratie Systeem</header>-->
-            <header>Leerling Registratie Systeem
-    <nav>
-	<div class="main-wrapper">
-		<ul>
-                    <li><a href="HTMLPage1.php">Hoofdpagina</a></li>
-		</ul>
-            <!--		<div class="nav-login">-->
-                
-                <ul>
-                    <li><a href="invoerenLeerling.php">Leerlingen</a></li>
-		</ul>
-        <!--		<div class="nav-login">-->
-                <ul>
-                    <li><a href="registreerAanwezigheid.php">Aanwezigheid</a></li>
-		</ul>
-
-	</div>
-
-    </nav>
-	
-</header>
+<!--        <section class="main-container">
+        <div class="banner">
+            <header><h1>Leerling Registratie Systeem</h1></header>
         </div>
-        <nav>
-
-        </nav>
+        </section>-->
+        
         <div class="klas">
 
 
