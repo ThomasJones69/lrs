@@ -33,12 +33,12 @@ require_once './connection.php';
 		$conn = connectToDb();
 		$recordSet = $conn->query($sql);
 		if ($recordSet) {
-			echo "<div class='klas' > ";
+			echo "<div class='klas' ondrop='drop(event,this)' ondragover='allowDrop(event)'> ";
 				while ($row = mysqli_fetch_array($recordSet)) {
 					if ($alleenAbsenteLeerlingen) {
 						// dit is de tak voor de absente leerlingen registratie
 						if (leerlingIsVandaagNogNietAanwezigGeregistreerd($row['id'])) {
-							echo " <div class='leerling' id=" . $row['id'] . "> ";
+							echo " <div draggable='true' ondragstart='drag(event,this)' class='leerling' id=" . $row['id'] . "> ";
 							echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='afwezig(this)'> ";
 							echo createTagSelect('selIndex'. $row['id']);
 							echo "</div>";
@@ -46,9 +46,9 @@ require_once './connection.php';
 					} else {
 						// dit is de tak voor de aanwezigheid
 						if (leerlingIsVandaagNogNietAanwezigGeregistreerd($row['id'])) {
-							echo " <div class='leerling' id='afbContainer'> ";
+							echo " <div draggable='true' ondragstart='drag(event,this)'class='leerling' id='afbContainer'> ";
 						}  else {
-							echo " <div  style='opacity:0.4' class='leerling' id='afbContainer'> ";
+							echo " <div  draggable='true' ondragstart='drag(event,this)'style='opacity:0.4' class='leerling' id='afbContainer'> ";
 						}
 						echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='aanwezig(this)'> ";
 						echo "</div>";
