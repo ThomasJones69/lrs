@@ -1,7 +1,7 @@
 .leerling 
 {
     display:inline-block;
-/*    //uitgesterd door gerard 14 jan 2018   height: 80%;   */
+    /*    //uitgesterd door gerard 14 jan 2018   height: 80%;   */
 
 }
 
@@ -27,6 +27,7 @@ nav{
     display:inline-block;
     background-color: blue;
     width: 20%;
+    float: right;
 
 }
 
@@ -56,6 +57,9 @@ footer{
     cursor: pointer;
     width: auto;
     box-shadow: 10px 10px 5px #888888;
+    position: absolute;
+    right:0;
+    bottom: 100;
 }
 
 button:hover {
@@ -65,12 +69,12 @@ button:hover {
 .popupnaam{
     position: relative;
     z-index: 9;
-    top:-90%;
+    top:-35%;
     margin-left: 50%;
     border: 1px solid red;
     background-color: #ffff99;
-    border-radius: 8px;
-    width: 390px;
+    border-radius: 4px;
+    width: 400px;
     height: 380px;
     box-shadow: 10px 10px black;             
 }
@@ -149,15 +153,21 @@ input{
 /*            end opmaak button*/
 
 .klas{
-    width: 80%;
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    float: left;
 
 }
 
 img{
+    /*    align-items: */
     border: 1px solid red;
     border-radius: 3px;
     width: 130px;
     margin: 5px;
     object-fit: contain
 }
+
 
