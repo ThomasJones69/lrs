@@ -45,6 +45,7 @@ footer{
 
 #newstudent{
     float: left;
+<<<<<<< HEAD
     border: none;
     cursor: pointer;
     border-radius: 2px;
@@ -54,6 +55,17 @@ footer{
     margin: 8px 0;
     border: none;
     cursor: pointer;
+=======
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    background-color: cornflowerblue;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+>>>>>>> master
     width: auto;
     box-shadow: 10px 10px 5px #888888;
 }

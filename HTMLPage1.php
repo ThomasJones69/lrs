@@ -2,7 +2,9 @@
 session_start();
 require_once './connection.php';
 require_once './functiesPHP.php';
+
 include_once 'header.php';
+
 ?>
 
 <html>
@@ -36,7 +38,7 @@ include_once 'header.php';
     </head>
     
     <body>
-<<<<<<< HEAD
+
 <!--        <section class="main-container">
         <div class="banner">
             <header><h1>Leerling Registratie Systeem</h1></header>
