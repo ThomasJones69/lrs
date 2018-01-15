@@ -6,12 +6,20 @@ require_once './functiesPHP.php';
 ?>
 <html>
     <head>
-
-    </head>
-    <body>
-
-
-<!--------        <link rel="stylesheet" type="text/css" href="opmaaklrs.css">    ----->
+<style>
+.GroupAanwezigheid	{
+	color:red;
+    border: 3px solid DimGray;
+    border-radius: 3px;
+    width: 200px;
+    margin: 5px;
+    object-fit: contain
+}
+	
+</style>
+	
+		<script src="lrsscript.js"></script>
+       <link rel="stylesheet" type="text/css" href="opmaaklrs.css">   
         <meta charset="utf-8" />
         <title> Leerlingen Registratie Systeem </title>
 
@@ -21,6 +29,11 @@ require_once './functiesPHP.php';
         <nav>
 
         </nav>
+
+    </head>
+    <body>
+
+
 
         <div class="klas">
             <?php
@@ -33,14 +46,14 @@ require_once './functiesPHP.php';
             $vorigID = 9999999;
             while ($row = mysqli_fetch_array($result)) {
                 if ($vorigID != $row['leerlingID']) {
-                    echo " <div class='leerling' > \n";
-                    echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=100px  ></div> \n";
-                    echo "<div class='leerling'>" . $row['naam'] . " </div>\n";
+					echo " <div    class='GroupAanwezigheid' id='afbContainer'> ";
+//                    echo " <div class='leerling' > \n";
+                    echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=100px  > \n";
+                    echo "<p   class='leerling'>" . $row['naam'] . " </p> ";
                     $vorigID = $row['leerlingID'];
-//                    echo "<div class='leerling> </div>\n";
                 }
                 echo "<p>" . $row['datum'] . " tijd " . $row['tijd'] ." ". $row['signalering'] . " </p>\n";
-//                echo "<div </div>\n";
+				echo "</div >";
             }
             echo "</div >";
             ?>      

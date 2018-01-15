@@ -69,11 +69,11 @@ function getAbsentieCode( $pDescAbsentie)  {
 					} else {
 						// dit is de tak voor de aanwezigheid  gewone
 						if (leerlingIsVandaagNogNietAanwezigGeregistreerd($row['id'])) {
-							echo " <div    class='leerling' id='afbContainer'> ";
+							echo " <div    draggable='true' class='leerling' id='afbContainer'> ";
 						}  else {
-							echo " <div  style='opacity:0.4' class='leerling' id='afbContainer'> ";
+							echo " <div  draggable='true'  style='opacity:0.4' class='leerling' id='afbContainer'> ";
 						}
-						echo "<img draggable='true'  id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='aanwezig(this)'> ";
+						echo "<img  id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='aanwezig(this)'> ";
 						echo "</div>";
 					} 
 				}
