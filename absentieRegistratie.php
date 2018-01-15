@@ -48,8 +48,6 @@ function afwezig(selectElement) {
         <nav>
 
         </nav>
-        <div class="klas">
-
 
     <?php zetLeerlingenOpHetScherm(TRUE);    ?>
 

@@ -1,6 +1,28 @@
 <?php
 require_once './connection.php';
 
+
+function getAbsentieCode( $pDescAbsentie)  {
+	$eruit = 1;
+	$conn = connectToDb();
+	$sql = "SELECT * FROM absentie where `signalering` = '" . $pDescAbsentie ."'";
+	echo $sql;
+	$result = $conn->query($sql);
+	if ($result) {
+		echo 12;
+		$row = mysqli_fetch_array($result) ;
+		echo 14;
+		if (isset($row['id'])) {
+			echo 16;
+			$eruit = $row['id'] ;
+		}
+	}
+	echo $eruit;
+	return $eruit;
+	
+}
+
+
 	function leerlingIsVandaagNogNietAanwezigGeregistreerd($paramLeerlingID) {
 		$eruit = false;
 		$huidigeDatum = date("Y-m-d");
@@ -38,19 +60,20 @@ require_once './connection.php';
 					if ($alleenAbsenteLeerlingen) {
 						// dit is de tak voor de absente leerlingen registratie
 						if (leerlingIsVandaagNogNietAanwezigGeregistreerd($row['id'])) {
-							echo " <div draggable='true' ondragstart='drag(event,this)' class='leerling' id=" . $row['id'] . "> ";
-							echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='afwezig(this)'> ";
-							echo createTagSelect('selIndex'. $row['id']);
+							echo " <div class='leerling' id='afbContainer'> ";
+//							echo " <div class='afbContainer' id=" . $row['id'] . "> ";
+							echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='myPopup_absentie(this)'> ";
+//							echo createTagSelect('selIndex'. $row['id']);
 							echo "</div>";
 						} 
 					} else {
-						// dit is de tak voor de aanwezigheid
+						// dit is de tak voor de aanwezigheid  gewone
 						if (leerlingIsVandaagNogNietAanwezigGeregistreerd($row['id'])) {
 							echo " <div draggable='true' ondragstart='drag(event,this)'class='leerling' id='afbContainer'> ";
 						}  else {
 							echo " <div  draggable='true' ondragstart='drag(event,this)'style='opacity:0.4' class='leerling' id='afbContainer'> ";
 						}
-						echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='aanwezig(this)'> ";
+						echo "<img draggable='true'  id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='aanwezig(this)'> ";
 						echo "</div>";
 					} 
 				}

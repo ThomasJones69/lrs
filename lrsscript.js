@@ -110,7 +110,7 @@ function myPopup_absentie(img) {
     popup.setAttribute("id", "test")
 
     var form = document.createElement("form");
-    form.setAttribute("action", "BasTest.php");
+    form.setAttribute("action", "storeAfwezigheid.php");    
     form.setAttribute("id", "myFormAbsent");
     form.setAttribute("method", "get");
     form.setAttribute("enctype", "multipart/form-data");

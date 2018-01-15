@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2018 at 12:31 PM
+-- Generation Time: Jan 15, 2018 at 12:07 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -41,17 +41,14 @@ CREATE TABLE `aanwezigheid` (
 --
 
 INSERT INTO `aanwezigheid` (`leerling_id`, `datum`, `tijd`, `absentiecode`, `klas`) VALUES
-(1, '2018-01-13', 1158, 0, 1),
-(1, '2018-01-13', 1228, 0, 1),
-(2, '2018-01-13', 1158, 0, 1),
-(4, '2018-01-13', 1149, 0, 1),
-(4, '2018-01-13', 1228, 0, 1),
-(5, '2018-01-13', 1149, 0, 1),
-(6, '2018-01-13', 1149, 0, 1),
-(6, '2018-01-13', 1158, 0, 1),
-(7, '2018-01-13', 1149, 0, 1),
-(8, '2018-01-13', 1149, 0, 1),
-(9, '2018-01-13', 1149, 0, 1);
+(1, '2018-01-15', 1158, 4, 1),
+(2, '2018-01-15', 1157, 5, 1),
+(3, '2018-01-15', 1157, 7, 1),
+(19, '2018-01-15', 1157, 8, 1),
+(20, '2018-01-15', 1157, 4, 1),
+(21, '2018-01-15', 1157, 9, 1),
+(24, '2018-01-15', 1157, 10, 1),
+(25, '2018-01-15', 1157, 11, 1);
 
 -- --------------------------------------------------------
 
@@ -73,7 +70,14 @@ CREATE TABLE `absentie` (
 INSERT INTO `absentie` (`id`, `signalering`, `aantal`, `urgentie`) VALUES
 (0, 'Aanwezig', 0, 0),
 (1, 'Ziek', 3, 1),
-(4, 'Onbekend', 0, 0);
+(4, 'Onbekend', 0, 0),
+(5, 'ontvoerd', 1, 1),
+(6, 'onbekend', 1, 1),
+(7, 'vermist', 1, 1),
+(8, 'mishandeld', 1, 1),
+(9, 'ijsvrij', 1, 1),
+(10, 'weeralarm', 1, 1),
+(11, 'medische klacht', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -118,16 +122,14 @@ CREATE TABLE `leerling` (
 --
 
 INSERT INTO `leerling` (`id`, `naam`, `adres`, `woonplaats`, `tel`, `telnood`, `telouders`, `foto`, `schermvolgnr`, `klas`) VALUES
-(1, 'Bas Gehin', 'Kerkstraat 26', 'Zwolle', '06123456789', '06123456789', '06123456789', './fotoos/bas.jpg', 1, 1),
+(1, 'Bas Gehin', 'Kerkstraat 26', 'Zwolle', '06123456789', '06123456789', '06123456789', './fotoos/bas.jpg', 133, 1),
 (2, 'Thomas Jones', 'Dorpstraat 12', 'Hardenberg', '06123456789', '06123456789', '06123456789', './fotoos/thomas.jpg', 2, 1),
 (3, 'Khaldoon', 'kerlaan 22', 'amsterdam', '06123456789', '06123456789', '06123456789', 'fotoos/khaldoon.jpg', 3, 1),
-(5, 'eenhorn', 'ee', 'ee', '98', '76', '54', 'fotoos/default.jpg', 4, 1),
-(6, 'g', 'g', 'g', '8', 'g', '', 'fotoos/default.jpg', 1, 0),
-(7, 'a', 'a', 'a', '', '', '', 'fotoos/default.jpg', 1, 0),
-(8, 'h', 'h', 'h', '56789', '56789', '6789', 'fotoos/default.jpg', 5, 1),
-(9, 'eenhoorn', 'kerklaan', 'ede', '666', '666', '66666', 'fotoos/eenhorn.png', 6, 1),
-(10, 'gerard', 'gg', '', '', '', '', 'fotoos/eenhorn.png', 7, 1),
-(18, 'zx', '', '', '', '', '', 'fotoos/eenhorn.png', 8, 1);
+(19, 'Derk', 'Kerlaan', 'emmen', '0987654331', '12345678', '56789', 'fotoos/derk.jpg', 9, 1),
+(20, 'Jurjen', 'Fietsstraat', 'fiwetsstad', '345678', '45678', '456789', 'fotoos/jurjen.jpg', 10, 1),
+(21, 'jeanine', 'janinestraat', 'Gronoinge', '5678', '5678', '5678', 'fotoos/jeanine.jpg', 11, 1),
+(24, 'anneMarije', 'berkum', '', '56789', '678', '78', 'fotoos/annem.jpg', 12, 1),
+(25, 'g', 'g', 'g', '56789', '', '', 'fotoos/eend9.jpg', 13, 1);
 
 --
 -- Indexes for dumped tables
@@ -165,13 +167,13 @@ ALTER TABLE `leerling`
 -- AUTO_INCREMENT for table `aanwezigheid`
 --
 ALTER TABLE `aanwezigheid`
-  MODIFY `leerling_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `leerling_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `absentie`
 --
 ALTER TABLE `absentie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `klas`
@@ -183,7 +185,7 @@ ALTER TABLE `klas`
 -- AUTO_INCREMENT for table `leerling`
 --
 ALTER TABLE `leerling`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
