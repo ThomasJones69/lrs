@@ -2,6 +2,9 @@
 session_start();
 require_once './connection.php';
 require_once './functiesPHP.php';
+
+include_once 'header.php';
+
 ?>
 
 <html>
@@ -33,34 +36,43 @@ require_once './functiesPHP.php';
         <meta charset="utf-8" />
         <title> Leerlingen Registratie Systeem </title>
     </head>
+    
     <body>
-        <!--        <div class="banner">
-                    <header>Leerling Registratie Systeem</header>-->
-        <header>Leerling Registratie Systeem
-            <nav>
-                <div class="main-wrapper">
-                    <ul>
-                        <li><a href="HTMLPage1.php">Hoofdpagina</a></li>
-                    </ul>
-                    <!--		<div class="nav-login">-->
 
-                    <ul>
-                        <li><a href="opvragenAanwezigheid.php">Opvragen aanwezigheid</a></li>
-                    </ul>
-                    <!--		<div class="nav-login">-->
-                    <ul>
-                        <li><a href="absentieRegistratie.php">Absentie registratie</a></li>
-                    </ul>
+<!--        <section class="main-container">
+        <div class="banner">
+            <header><h1>Leerling Registratie Systeem</h1></header>
+        </div>
+        </section>-->
+        
+        <div class="klas">
 
-                </div>
 
-            </nav>
+            <?php
+            $sql = "SELECT * FROM `leerling`";
+            $conn = connectToDb();
+            $result = $conn->query($sql);
 
-        </header>
-    </div>
-    <nav>
 
-    </nav>
+            echo "<div class='klas' > ";
+
+
+            while ($row = mysqli_fetch_array($result)) {
+                echo " <div class='leerling' id='afbContainer'> ";
+                echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='aanwezig(this)'>";
+            }
+            echo "</div >";
+            ?>
+
+
+            <div class="zoek">
+                Dit is test
+            </div>
+
+            <div class="button">
+                <button type="submit" onclick="myPopup()" value="Leerling opvoeren" >Opvoeren Leerling</button> 
+            </div>
+
 
     <?php
     /*    functei is naa functiesPHP         $sql = "SELECT * FROM `leerling`";
