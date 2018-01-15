@@ -8,11 +8,11 @@ require_once './functiesPHP.php';
     <head>
 
     </head>
+    <body style="background: linear-gradient(rgba(0,0,128,0.7), rgba(128,128,128,0.3));">
     <body>
 
 
-<!--------        <link rel="stylesheet" type="text/css" href="opmaaklrs.css">    ----->
-        <meta charset="utf-8" />
+        <!--<link rel="stylesheet" type="text/css" href="opmaaklrs.css">--> 
         <title> Leerlingen Registratie Systeem </title>
 
         <div class="banner">
@@ -25,7 +25,7 @@ require_once './functiesPHP.php';
         <div class="klas">
             <?php
             $sql = "SELECT * , `leerling`.`id` as `leerlingID`  FROM `aanwezigheid` JOIN  `leerling`  on  `leerling`.`id` =  `aanwezigheid`.`leerling_id` ";
-			$sql = $sql .                        " JOIN  `absentie`  on  `absentie`.`id` =  `aanwezigheid`.`absentiecode`";
+            $sql = $sql . " JOIN  `absentie`  on  `absentie`.`id` =  `aanwezigheid`.`absentiecode`";
 //			echo($sql);
             $conn = connectToDb();
             $result = $conn->query($sql);
@@ -39,7 +39,7 @@ require_once './functiesPHP.php';
                     $vorigID = $row['leerlingID'];
 //                    echo "<div class='leerling> </div>\n";
                 }
-                echo "<p>" . $row['datum'] . " tijd " . $row['tijd'] ." ". $row['signalering'] . " </p>\n";
+                echo "<p>" . $row['datum'] . " tijd " . $row['tijd'] . " " . $row['signalering'] . " </p>\n";
 //                echo "<div </div>\n";
             }
             echo "</div >";
