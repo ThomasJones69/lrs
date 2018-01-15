@@ -65,7 +65,7 @@ button:hover {
 .popupnaam{
     position: relative;
     z-index: 9;
-    top:-90%;
+    top:-400%;
     margin-left: 50%;
     border: 1px solid red;
     background-color: #ffff99;

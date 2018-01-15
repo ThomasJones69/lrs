@@ -87,13 +87,15 @@ require_once './functiesPHP.php';
     ?>
 
 
-    <div ondrop='drop(event, this)' ondragover='allowDrop(event)'class='zoek'>
-        Dit is test
-    </div>
-    <div ondrop='drop(event, this)' ondragover='allowDrop(event)'class='tot'>
-        Dit is test2
-    </div>
-
+    <div id="zoekvak" ondrop='drop(event, this)' ondragover='allowDrop(event)'class='zoek'>
+        zoekvak
+    </div >
+   <br>
+   <br>
+    <div id="verkeervak" ondrop='drop(event, this)' ondragover='allowDrop(event)'class='zoek'>
+        verkeervak
+    </div >
+   
     <div class="button">
         <button id="newstudent" type="submit" onclick="myPopup()" value="Leerling opvoeren" >Opvoeren Leerling</button> 
     </div>
@@ -103,4 +105,4 @@ require_once './functiesPHP.php';
     ITPH project mede mogelijk gemaakt door: Thomas, Bas, Gerard en Derk
 </footer>
 </body>
-</html>
+</html> 
