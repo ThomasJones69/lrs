@@ -110,7 +110,7 @@ function myPopup_absentie(img) {
     popup.setAttribute("id", "test")
 
     var form = document.createElement("form");
-    form.setAttribute("action", "storeAfwezigheid.php");    
+    form.setAttribute("action", "storeAfwezigheid.php");
     form.setAttribute("id", "myFormAbsent");
     form.setAttribute("method", "get");
     form.setAttribute("enctype", "multipart/form-data");
@@ -146,7 +146,7 @@ function myPopup_absentie(img) {
     var select = document.createElement("select");
     select.setAttribute("name", "absentieID");
     loadDoc(select);
-    
+
     //toevoegen child aan parent 
     form.appendChild(afb);
     form.appendChild(id);
@@ -175,14 +175,14 @@ function loadDoc(select) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            basFunction(this,select);
+            basFunction(this, select);
         }
     };
     xhttp.open("GET", "code_absentie.xml", true);
     xhttp.send();
 }
 // creeren option tags dropdown menu
-function basFunction(xml,select) {
+function basFunction(xml, select) {
     var i;
     var xmlDoc = xml.responseXML;
     var x = xmlDoc.getElementsByTagName("code");
@@ -206,18 +206,27 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 // maakt draggen element mogeijk
-function drag(ev,dragItem) {
+function drag(ev, dragItem) {
     ev.dataTransfer.setData("text", ev.target.id);
 }
 // maakt drop element mogelijk
-function drop(ev,draggedItem) {
+function drop(ev, draggedItem) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
-//    var Commentaar = document.getElementById("nieuw");
-//    var Commentaar2 = document.getElementById("nieuw2"); 
-//    var textID = document.createTextNode(draggedItem.id);
-//    Commentaar.appendChild(textID);
-//    var list = document.getElementById("div2").lastElementChild.id ;/// bepalen laste kind van divelement
-//   document.getElementById("nieuw2").innerHTML = "element P with id   " +list;// publiceren in element
+    var testcontainer = draggedItem.id; //bepalen id vak
+    alert(testcontainer);
+    var list = document.getElementById(testcontainer).lastElementChild.id;// bepalen laatste kind van divelement
+    alert(list);
+//    var leerlingID;
+//    var nieuweKlas;
+    if (testcontainer == "zoekvak") {
+        $.get("bastest.php", {leerlingID: list, nieuweKlas: 0}, function (data, status) {
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+    } else if (testcontainer == "verkeervak") {
+        $.get("bastest_1.php", {leerlingID: list, nieuweKlas: 1}, function (data, status) {
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+    }
 }
