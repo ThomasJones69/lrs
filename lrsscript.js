@@ -200,3 +200,24 @@ function basFunction(xml,select) {
 function cancelPopup() {
     document.getElementById("test").parentNode.removeChild(document.getElementById("test"));
 }
+// drag en drop
+// maakt drop in element mogelijk voor ontvangst
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+// maakt draggen element mogeijk
+function drag(ev,dragItem) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+// maakt drop element mogelijk
+function drop(ev,draggedItem) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+//    var Commentaar = document.getElementById("nieuw");
+//    var Commentaar2 = document.getElementById("nieuw2"); 
+//    var textID = document.createTextNode(draggedItem.id);
+//    Commentaar.appendChild(textID);
+//    var list = document.getElementById("div2").lastElementChild.id ;/// bepalen laste kind van divelement
+//   document.getElementById("nieuw2").innerHTML = "element P with id   " +list;// publiceren in element
+}

@@ -5,12 +5,13 @@ require_once './functiesPHP.php';
 //echo showHeader();
 ?>
 <html>
-    <head>
+<head>
 <style>
 .topnav {
     background-color: #333;
     overflow: hidden;
 }
+
 
 .topnav a {
     float: left;
@@ -27,7 +28,6 @@ require_once './functiesPHP.php';
 .topnav a:hover {
     background-color: #cccccc;
     color: black;
-
 }
 
 .topnav a.active {
@@ -44,6 +44,7 @@ require_once './functiesPHP.php';
     object-fit: contain
 }
 
+
 .selector	{
 	display: inline-block;
 	color:red;
@@ -54,6 +55,7 @@ require_once './functiesPHP.php';
     object-fit: contain
 }
 	
+	
 </style>
 	
 <script src="lrsscript.js"></script>
@@ -61,7 +63,8 @@ require_once './functiesPHP.php';
 <meta charset="utf-8" />
 <title> Leerlingen Registratie Systeem </title>
 </head>
-<body>
+
+<body style="background: linear-gradient(rgba(0,0,128,0.7), rgba(128,128,128,0.3));">	
 	<div class="klas">
 		<?php
 		if ($_REQUEST) {
@@ -108,4 +111,29 @@ require_once './functiesPHP.php';
 		echo "</div >";
 		?>    
 
-</body>			
+			
+
+        <div class="klas">
+            <?php
+            $sql = "SELECT * , `leerling`.`id` as `leerlingID`  FROM `aanwezigheid` JOIN  `leerling`  on  `leerling`.`id` =  `aanwezigheid`.`leerling_id` ";
+            $sql = $sql . " JOIN  `absentie`  on  `absentie`.`id` =  `aanwezigheid`.`absentiecode`";
+//			echo($sql);
+            $conn = connectToDb();
+            $result = $conn->query($sql);
+
+            $vorigID = 9999999;
+            while ($row = mysqli_fetch_array($result)) {
+                if ($vorigID != $row['leerlingID']) {
+                    echo " <div class='leerling' > \n";
+                    echo "<img id = " . $row['id'] . " src=" . $row['foto'] . " width=100px  ></div> \n";
+                    echo "<div class='leerling'>" . $row['naam'] . " </div>\n";
+                    $vorigID = $row['leerlingID'];
+//                    echo "<div class='leerling> </div>\n";
+                }
+                echo "<p>" . $row['datum'] . " tijd " . $row['tijd'] . " " . $row['signalering'] . " </p>\n";
+//                echo "<div </div>\n";
+            }
+            echo "</div >";
+            ?> 
+</body			
+

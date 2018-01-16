@@ -55,7 +55,7 @@ function getAbsentieCode( $pDescAbsentie)  {
 		$conn = connectToDb();
 		$recordSet = $conn->query($sql);
 		if ($recordSet) {
-			echo "<div class='klas' > ";
+			echo "<div class='klas' ondrop='drop(event,this)' ondragover='allowDrop(event)'> ";
 				while ($row = mysqli_fetch_array($recordSet)) {
 					if ($alleenAbsenteLeerlingen) {
 						// dit is de tak voor de absente leerlingen registratie
@@ -69,9 +69,9 @@ function getAbsentieCode( $pDescAbsentie)  {
 					} else {
 						// dit is de tak voor de aanwezigheid  gewone
 						if (leerlingIsVandaagNogNietAanwezigGeregistreerd($row['id'])) {
-							echo " <div    draggable='true' class='leerling' id='afbContainer'> ";
+							echo " <div draggable='true' ondragstart='drag(event,this)'class='leerling' id='afbContainer'> ";
 						}  else {
-							echo " <div  draggable='true'  style='opacity:0.4' class='leerling' id='afbContainer'> ";
+							echo " <div  draggable='true' ondragstart='drag(event,this)'style='opacity:0.4' class='leerling' id='afbContainer'> ";
 						}
 						echo "<img  id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='aanwezig(this)'> ";
 						echo "</div>";
