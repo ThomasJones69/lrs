@@ -46,7 +46,6 @@ footer{
 
 #newstudent{
     float: left;
-<<<<<<< HEAD
     border: none;
     cursor: pointer;
     border-radius: 2px;
@@ -56,17 +55,6 @@ footer{
     margin: 8px 0;
     border: none;
     cursor: pointer;
-=======
-    border: none;
-    cursor: pointer;
-    border-radius: 2px;
-    background-color: cornflowerblue;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
->>>>>>> master
     width: auto;
     box-shadow: 10px 10px 5px #888888;
     position: absolute;
@@ -81,11 +69,7 @@ button:hover {
 .popupnaam{
     position: relative;
     z-index: 9;
-<<<<<<< HEAD
-    top:-400%;
-=======
     top:-35%;
->>>>>>> master
     margin-left: 50%;
     border: 1px solid red;
     background-color: #ffff99;

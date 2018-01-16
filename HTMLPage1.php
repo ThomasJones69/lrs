@@ -30,9 +30,6 @@ include_once 'header.php';
         </script>
 
         <link rel="stylesheet" type="text/css" href="opmaaklrs.css">
-        <style>
-
-        </style>
         <meta charset="utf-8" />
         <title> Leerlingen Registratie Systeem </title>
     </head>
