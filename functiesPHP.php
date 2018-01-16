@@ -73,7 +73,7 @@ function getAbsentieCode( $pDescAbsentie)  {
 						}  else {
 							echo " <div  draggable='true' ondragstart='drag(event,this)'style='opacity:0.4' class='leerling' id='afbContainer'> ";
 						}
-						echo "<img draggable='true'  id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='aanwezig(this)'> ";
+						echo "<img  id = " . $row['id'] . " src=" . $row['foto'] . " width=130  onclick='aanwezig(this)'> ";
 						echo "</div>";
 					} 
 				}
@@ -97,6 +97,21 @@ function getAbsentieCode( $pDescAbsentie)  {
                 $eruit .= "</option>";
             }
             $eruit .= "</select>"; 
+
+            return $eruit; 
+        }
+
+        function createButons($selectidname) {
+			$eruit = "";
+			$ParamConn = connectToDb();
+            $sql           = "SELECT * FROM `absentie` ";
+            $erinResultSet = $ParamConn->query($sql);
+            for ($x = 0; $x < $erinResultSet->num_rows; $x++) {
+                $row = $erinResultSet->fetch_assoc();  
+//				echo $row['signalering'];
+				$sg=$row['signalering'];
+				$eruit .= "<a href=  opvragenAanwezigheid.php?absentieCode=". $sg. "> ".$sg . " </a>";
+			}
 
             return $eruit; 
         }
